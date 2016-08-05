@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>MainFrame.qml</file>
+        <file>TimeLine.qml</file>
+        <file>LaumioMenu.qml</file>
+    </qresource>
+</RCC>
