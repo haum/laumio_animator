@@ -79,6 +79,35 @@ RPanel {
                     width: 160
                     placeholderText: "de 0 à 12, ou 255"
                 }
+
+
+                LALabel {
+                    text: "X"
+                }
+
+                LATextField {
+                    text: selectedLaumio ? selectedLaumio.x : ""
+                    width: 160
+                    onTextChanged: {
+                        if (selectedLaumio && selectedLaumio.x !== text) {
+                            selectedLaumio.x = text;
+                        }
+                    }
+                }
+
+                LALabel {
+                    text: "Y"
+                }
+
+                LATextField {
+                    text: selectedLaumio ? selectedLaumio.y : ""
+                    width: 160
+                    onTextChanged: {
+                        if (selectedLaumio && selectedLaumio.y !== text) {
+                            selectedLaumio.y = text;
+                        }
+                    }
+                }
             }
 
         }

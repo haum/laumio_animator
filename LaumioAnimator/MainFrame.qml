@@ -129,7 +129,7 @@ Item {
         }
         Loader {
             id: rightZoneLoader
-            property var selectedLaumio: listColumn.selected.laumio
+            property var selectedLaumio: listColumn.selected ? listColumn.selected.laumio : undefined
             anchors {
                 top: parent.top
                 topMargin: 10
