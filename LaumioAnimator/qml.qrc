@@ -4,5 +4,6 @@
         <file>MainFrame.qml</file>
         <file>TimeLine.qml</file>
         <file>LaumioMenu.qml</file>
+        <file>widgets/LAButton.qml</file>
     </qresource>
 </RCC>
