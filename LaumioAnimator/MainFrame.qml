@@ -53,7 +53,11 @@ Item {
             }
             LAButton {
                 text: "Timeline"
-                onClicked: rightZoneLoader.source = "TimeLine.qml"
+                onClicked: rightZoneLoader.source = "TimeLineRPanel.qml"
+            }
+            LAButton {
+                text: "Preview"
+                onClicked: rightZoneLoader.source = "PreviewRPanel.qml"
             }
         }
     }
@@ -95,7 +99,7 @@ Item {
 
         Column {
             id: listColumn
-            property int selected: -1
+            property var selected: undefined
             anchors {
                 top: parent.top
                 topMargin: 10
@@ -107,12 +111,12 @@ Item {
                     width: parent.width
                     height: 50
                     laumio: model.laumio
-                    selected: listColumn.selected == index
+                    selected: listColumn.selected == this
                     onClicked: {
-                        if (listColumn.selected == index)
-                            listColumn.selected = -1;
+                        if (listColumn.selected == this)
+                            listColumn.selected = undefined;
                         else
-                            listColumn.selected = index;
+                            listColumn.selected = this;
                     }
                     onRemoveMe: anim.deleteLaumio(index)
                 }
@@ -125,6 +129,7 @@ Item {
         }
         Loader {
             id: rightZoneLoader
+            property var selectedLaumio: listColumn.selected.laumio
             anchors {
                 top: parent.top
                 topMargin: 10
@@ -133,7 +138,6 @@ Item {
                 leftMargin: 10
                 right: parent.right
             }
-            source: "TimeLine.qml"
         }
     }
 }

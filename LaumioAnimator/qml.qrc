@@ -2,8 +2,13 @@
     <qresource prefix="/">
         <file>main.qml</file>
         <file>MainFrame.qml</file>
-        <file>TimeLine.qml</file>
         <file>LaumioMenu.qml</file>
         <file>widgets/LAButton.qml</file>
+        <file>widgets/LALabel.qml</file>
+        <file>widgets/LATextField.qml</file>
+        <file>widgets/LATitle.qml</file>
+        <file>RPanel.qml</file>
+        <file>TimeLineRPanel.qml</file>
+        <file>PreviewRPanel.qml</file>
     </qresource>
 </RCC>
