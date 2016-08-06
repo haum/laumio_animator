@@ -4,6 +4,8 @@ import Laumio 1.0
 import "widgets"
 
 RPanel {
+    followList: false
+
     Text {
         anchors.centerIn: parent
         text: "Aucun Laumio sélectionné"

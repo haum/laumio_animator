@@ -94,8 +94,8 @@ Item {
             right: parent.right
         }
 
-        contentHeight: listColumn.height
-        clip:true
+        contentHeight: Math.max(listColumn.height, bgLeft.height)
+        clip: true
 
         Column {
             id: listColumn
@@ -130,10 +130,12 @@ Item {
         Loader {
             id: rightZoneLoader
             property var selectedLaumio: listColumn.selected ? listColumn.selected.laumio : undefined
+            property var anim: anim
+            clip: true
             anchors {
                 top: parent.top
                 topMargin: 10
-                bottom: listColumn.bottom
+                bottom: item && item.followList ? listColumn.bottom : parent.bottom
                 left: listColumn.right
                 leftMargin: 10
                 right: parent.right
