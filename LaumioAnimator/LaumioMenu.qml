@@ -5,10 +5,18 @@ Item {
     property var laumio
     property bool selected
     signal clicked()
+    signal removeMe()
 
     MouseArea {
         anchors.fill: parent
-        onClicked: parent.clicked()
+        acceptedButtons: Qt.LeftButton | Qt.RightButton
+        onClicked: {
+            if(mouse.button & Qt.RightButton) {
+                parent.removeMe();
+            } else {
+                parent.clicked();
+            }
+        }
 
         Rectangle {
             anchors.fill: parent

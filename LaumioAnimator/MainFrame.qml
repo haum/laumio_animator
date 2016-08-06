@@ -114,6 +114,7 @@ Item {
                         else
                             listColumn.selected = index;
                     }
+                    onRemoveMe: anim.deleteLaumio(index)
                 }
             }
             LAButton {
