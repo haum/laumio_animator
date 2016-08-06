@@ -10,5 +10,6 @@
         <file>RPanel.qml</file>
         <file>TimeLineRPanel.qml</file>
         <file>PreviewRPanel.qml</file>
+        <file>MapRPanel.qml</file>
     </qresource>
 </RCC>

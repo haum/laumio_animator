@@ -59,6 +59,10 @@ Item {
                 text: "Preview"
                 onClicked: rightZoneLoader.source = "PreviewRPanel.qml"
             }
+            LAButton {
+                text: "Map"
+                onClicked: rightZoneLoader.source = "MapRPanel.qml"
+            }
         }
     }
     Rectangle {
