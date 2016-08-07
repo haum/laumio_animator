@@ -20,8 +20,6 @@ public:
 
     explicit LaumioAnimation(QObject * parent = nullptr);
 
-    void registerFactory(QString name, std::unique_ptr <Animation> (*factory)());
-
     virtual int rowCount(const QModelIndex &parent) const override;
     virtual QVariant data(const QModelIndex &index, int role) const override;
     QHash <int, QByteArray> roleNames() const override;
@@ -42,6 +40,8 @@ private:
     std::map <QString, std::unique_ptr <Animation> (*)()> m_factories;
 
     std::vector <std::unique_ptr<Animation>> m_animationsStorage;
+
+    void registerFactory(QString name, std::unique_ptr <Animation> (*factory)());
 };
 
 #endif // LAUMIOANIMATION_H
