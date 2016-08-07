@@ -5,6 +5,8 @@
 #include <QObject>
 #include <memory>
 #include <vector>
+#include <map>
+#include "animation.h"
 #include "laumio.h"
 
 class LaumioAnimation : public QAbstractListModel
@@ -18,6 +20,8 @@ public:
 
     explicit LaumioAnimation(QObject * parent = nullptr);
 
+    void registerFactory(QString name, std::unique_ptr <Animation> (*factory)());
+
     virtual int rowCount(const QModelIndex &parent) const override;
     virtual QVariant data(const QModelIndex &index, int role) const override;
     QHash <int, QByteArray> roleNames() const override;
@@ -30,7 +34,14 @@ public slots:
     void saveToFile(QString filename);
 
 private:
-    std::vector <std::unique_ptr<Laumio>> m_laumios;
+    struct LaumioInfo {
+        std::unique_ptr<Laumio> laumio;
+        std::vector <Animation*> animations;
+    };
+    std::vector <LaumioInfo> m_laumios;
+    std::map <QString, std::unique_ptr <Animation> (*)()> m_factories;
+
+    std::vector <std::unique_ptr<Animation>> m_animationsStorage;
 };
 
 #endif // LAUMIOANIMATION_H

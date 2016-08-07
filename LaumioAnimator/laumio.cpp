@@ -53,7 +53,8 @@ void Laumio::animate(QString animation = "default", QColor color = "black") {
         data[1] = color.red();
         data[2] = color.green();
         data[3] = color.blue();
-        len = 4;
+        data[4] = 100;
+        len = 5;
     }
     sock.writeDatagram(data, len, QHostAddress(m_ip), m_port);
 }
