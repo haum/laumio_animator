@@ -5,7 +5,14 @@ std::unique_ptr <Animation> ConstantColorAnimation::factory() {
     return std::unique_ptr <Animation> (new ConstantColorAnimation());
 }
 
-ConstantColorAnimation::ConstantColorAnimation(QObject * parent) : Animation("ConstantColor", parent) {
+ConstantColorAnimation::ConstantColorAnimation(QObject * parent, Laumio *laumio) : Animation("ConstantColor", parent, laumio) {
+}
+
+void ConstantColorAnimation::animate(){
+    if(!done){
+        done = true;
+        m_laumio->send_color(0xFF, color());
+    }
 }
 
 void ConstantColorAnimation::loadFromJSON(QJsonObject & obj) {

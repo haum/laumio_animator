@@ -11,5 +11,6 @@
         <file>TimeLineRPanel.qml</file>
         <file>PreviewRPanel.qml</file>
         <file>MapRPanel.qml</file>
+        <file>AnimationLane.qml</file>
     </qresource>
 </RCC>

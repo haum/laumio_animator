@@ -22,6 +22,14 @@ QVariant LaumioAnimation::data(const QModelIndex &index, int role) const {
     switch (role) {
     case LaumioRole:
         return qVariantFromValue(m_laumios.at(index.row()).laumio.get());
+    case AnimationsRole:{
+        QList <QObject*> ret;
+        auto & anims = m_laumios.at(index.row()).animations;
+        int size = anims.size();
+        for(auto i = 0; i < size; i++)
+            ret.append(anims[i]);
+        return qVariantFromValue(ret);
+    }
     default:
         return QVariant();
     }
@@ -34,6 +42,7 @@ void LaumioAnimation::registerFactory(QString name, std::unique_ptr <Animation> 
 QHash <int, QByteArray> LaumioAnimation::roleNames() const {
     QHash <int, QByteArray> ret;
     ret[LaumioRole] = "laumio";
+    ret[AnimationsRole] = "animations";
     return ret;
 }
 
@@ -51,6 +60,14 @@ void LaumioAnimation::deleteLaumio(int index) {
     std::advance(it, index);
     m_laumios.erase(it);
     endRemoveRows();
+}
+
+void LaumioAnimation::newAnimation() {
+
+}
+
+void LaumioAnimation::deleteAnimation(int index) {
+
 }
 
 void LaumioAnimation::loadFromFile(QString filename) {

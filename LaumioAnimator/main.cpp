@@ -7,7 +7,6 @@
 int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);
-
     qmlRegisterType <Laumio> ("Laumio", 1, 0, "Laumio");
     qmlRegisterType <LaumioAnimation> ("Laumio", 1, 0, "LaumioAnimation");
 

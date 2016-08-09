@@ -16,6 +16,7 @@ class LaumioAnimation : public QAbstractListModel
 public:
     enum {
         LaumioRole = Qt::UserRole + 1,
+        AnimationsRole,
     };
 
     explicit LaumioAnimation(QObject * parent = nullptr);
@@ -27,6 +28,9 @@ public:
 public slots:
     void newLaumio();
     void deleteLaumio(int index);
+
+    void newAnimation();
+    void deleteAnimation(int index);
 
     void loadFromFile(QString filename);
     void saveToFile(QString filename);

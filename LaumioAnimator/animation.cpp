@@ -1,6 +1,6 @@
 #include "animation.h"
 
-Animation::Animation(QString name, QObject *parent) : QObject(parent), m_name(name) {
+Animation::Animation(QString name, QObject *parent, Laumio *laumio) : QObject(parent), m_laumio(laumio), m_name(name) {
 }
 
 QString Animation::name() {

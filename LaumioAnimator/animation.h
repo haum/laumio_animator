@@ -3,6 +3,7 @@
 
 #include <QObject>
 #include "macrodegeu.h"
+#include "laumio.h"
 
 class Animation : public QObject
 {
@@ -12,7 +13,9 @@ class Animation : public QObject
     PROP(double, duration, 0)
 
 public:
-    explicit Animation(QString name, QObject *parent = 0);
+    explicit Animation(QString name, QObject *parent = 0, Laumio * laumio = 0);
+
+    virtual void animate() = 0;
 
     virtual void loadFromJSON(QJsonObject & obj) = 0;
     virtual void saveToJSON(QJsonObject & obj) = 0;
@@ -20,8 +23,12 @@ public:
 public slots:
     QString name();
 
+protected:
+    Laumio *m_laumio;
+
 private:
     QString m_name;
+
 };
 
 #endif // ANIMATION_H

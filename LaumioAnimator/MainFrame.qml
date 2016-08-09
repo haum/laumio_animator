@@ -130,6 +130,11 @@ Item {
                 text: "New Laumio"
                 onClicked: anim.newLaumio()
             }
+            LAButton {
+                anchors.horizontalCenter: parent.horizontalCenter
+                text: "New Animation"
+                onClicked: anim.newAnim()
+            }
         }
         Loader {
             id: rightZoneLoader
