@@ -62,8 +62,21 @@ void LaumioAnimation::deleteLaumio(int index) {
     endRemoveRows();
 }
 
-void LaumioAnimation::newAnimation() {
+QStringList LaumioAnimation::factoriesNames() {
+    QStringList ret;
+    for (auto imap: m_factories)
+        ret.append(imap.first);
+    return ret;
+}
 
+void LaumioAnimation::newAnimation(QString factoryName) {
+    auto itFactory = m_factories.find(factoryName);
+    if (itFactory != std::end(m_factories)) {
+        auto anim = (*itFactory->second)();
+        auto * animptr = anim.get();
+        m_animationsStorage.push_back(std::move(anim));
+        m_laumios.back().animations.push_back(animptr);
+    }
 }
 
 void LaumioAnimation::deleteAnimation(int index) {

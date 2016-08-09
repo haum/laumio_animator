@@ -29,7 +29,9 @@ public slots:
     void newLaumio();
     void deleteLaumio(int index);
 
-    void newAnimation();
+    QStringList factoriesNames();
+
+    void newAnimation(QString factoryName);
     void deleteAnimation(int index);
 
     void loadFromFile(QString filename);
