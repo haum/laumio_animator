@@ -7,8 +7,11 @@
 
 #include "constantcoloranimation.h"
 
+std::map <QString, std::unique_ptr <Animation> (*)()> LaumioAnimation::sFactories {
+    {"ConstantColor", &ConstantColorAnimation::factory}
+};
+
 LaumioAnimation::LaumioAnimation(QObject * parent) : QAbstractListModel(parent) {
-    registerFactory("ConstantColor", &ConstantColorAnimation::factory);
 }
 
 int LaumioAnimation::rowCount(const QModelIndex &parent) const {
@@ -33,10 +36,6 @@ QVariant LaumioAnimation::data(const QModelIndex &index, int role) const {
     default:
         return QVariant();
     }
-}
-
-void LaumioAnimation::registerFactory(QString name, std::unique_ptr <Animation> (*factory)()) {
-    m_factories[name] = factory;
 }
 
 QHash <int, QByteArray> LaumioAnimation::roleNames() const {
@@ -64,14 +63,14 @@ void LaumioAnimation::deleteLaumio(int index) {
 
 QStringList LaumioAnimation::factoriesNames() {
     QStringList ret;
-    for (auto imap: m_factories)
+    for (auto imap: sFactories)
         ret.append(imap.first);
     return ret;
 }
 
 void LaumioAnimation::newAnimation(QString factoryName) {
-    auto itFactory = m_factories.find(factoryName);
-    if (itFactory != std::end(m_factories)) {
+    auto itFactory = sFactories.find(factoryName);
+    if (itFactory != std::end(sFactories)) {
         auto anim = (*itFactory->second)();
         auto * animptr = anim.get();
         m_animationsStorage.push_back(std::move(anim));
@@ -108,8 +107,8 @@ void LaumioAnimation::loadFromFile(QString filename) {
         for (auto anidesc : anims) {
             auto ani = anidesc.toObject();
             if (ani.contains("type")) {
-                auto itFactory = m_factories.find(ani["type"].toString());
-                if (itFactory != std::end(m_factories)) {
+                auto itFactory = sFactories.find(ani["type"].toString());
+                if (itFactory != std::end(sFactories)) {
                     auto anim = (*itFactory->second)();
                     auto * animptr = anim.get();
                     m_animationsStorage.push_back(std::move(anim));

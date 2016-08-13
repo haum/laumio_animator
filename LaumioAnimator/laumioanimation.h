@@ -29,7 +29,10 @@ public slots:
     void newLaumio();
     void deleteLaumio(int index);
 
-    QStringList factoriesNames();
+    /** Get list of factories' names
+      * @return Factories' names
+      */
+    static QStringList factoriesNames();
 
     void newAnimation(QString factoryName);
     void deleteAnimation(int index);
@@ -38,16 +41,16 @@ public slots:
     void saveToFile(QString filename);
 
 private:
+    /** Factories **/
+    static std::map <QString, std::unique_ptr <Animation> (*)()> sFactories;
+
     struct LaumioInfo {
         std::unique_ptr<Laumio> laumio;
         std::vector <Animation*> animations;
     };
     std::vector <LaumioInfo> m_laumios;
-    std::map <QString, std::unique_ptr <Animation> (*)()> m_factories;
 
     std::vector <std::unique_ptr<Animation>> m_animationsStorage;
-
-    void registerFactory(QString name, std::unique_ptr <Animation> (*factory)());
 };
 
 #endif // LAUMIOANIMATION_H
