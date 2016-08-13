@@ -11,6 +11,7 @@ class Animation : public QObject
 
     PROP(double, fromStart, 0)
     PROP(double, duration, 0)
+    Q_PROPERTY(QString name READ name CONSTANT)
 
 public:
     explicit Animation(QString name, QObject *parent = 0, Laumio * laumio = 0);

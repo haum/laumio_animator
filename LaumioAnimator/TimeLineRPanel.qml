@@ -44,7 +44,7 @@ RPanel {
                             opacity: 0.8
                             visible: true
                             Text{
-                                text: laneModel.index + " " + index
+                                text: laneModel.laumio.name + "<br>" + modelData.name
                             }
                         }
                     }
