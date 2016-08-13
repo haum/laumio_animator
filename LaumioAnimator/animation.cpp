@@ -1,8 +1,23 @@
 #include "animation.h"
 
-Animation::Animation(QString name, QObject *parent, Laumio *laumio) : QObject(parent), m_laumio(laumio), m_name(name) {
+Animation::Animation(const QString name, QObject *parent) : QObject(parent), m_name(name) {
 }
 
 QString Animation::name() {
     return m_name;
+}
+
+bool Animation::animationStart(Laumio &laumio) {
+    Q_UNUSED(laumio)
+    return true;
+}
+
+bool Animation::animationUpdate(Laumio &laumio, double time) {
+    Q_UNUSED(laumio)
+    Q_UNUSED(time)
+    return false;
+}
+
+void Animation::animationStop(Laumio &laumio) {
+    Q_UNUSED(laumio)
 }

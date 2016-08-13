@@ -78,10 +78,6 @@ void LaumioAnimation::newAnimation(QString factoryName) {
     }
 }
 
-void LaumioAnimation::deleteAnimation(int index) {
-
-}
-
 void LaumioAnimation::loadFromFile(QString filename) {
     beginResetModel();
     m_laumios.clear();

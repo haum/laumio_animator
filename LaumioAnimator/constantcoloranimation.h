@@ -8,20 +8,30 @@
 #include "macrodegeu.h"
 #include "laumio.h"
 
+/** Animation which set a laumio to a constant color **/
 class ConstantColorAnimation : public Animation
 {
     Q_OBJECT
 
+    /** Property storing color to set **/
     PROP(QColor, color, "black")
 
 public:
+    /** Factory function to create the animation
+      * @return New animation wrapped in unique_ptr
+      */
     static std::unique_ptr <Animation> factory();
 
-    explicit ConstantColorAnimation(QObject * parent = nullptr, Laumio *laumio = nullptr);
+    /** Constructor
+      * @param parent QObject's parent if memory ownership is managed by Qt,
+      *               nullptr otherwise
+      */
+    explicit ConstantColorAnimation(QObject * parent = nullptr);
 
-    virtual void animate() override;
+    virtual bool animationStart(Laumio & laumio) override;
+    virtual void animationStop(Laumio & laumio) override;
 
-    virtual void loadFromJSON(QJsonObject & obj) override;
+    virtual void loadFromJSON(const QJsonObject & obj) override;
     virtual void saveToJSON(QJsonObject & obj) override;
 
 private:
