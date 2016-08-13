@@ -9,12 +9,12 @@ ConstantColorAnimation::ConstantColorAnimation(QObject * parent) : Animation("Co
 }
 
 bool ConstantColorAnimation::animationStart(Laumio &laumio) {
-    laumio.send_color(0xFF, color());
+    laumio.send_color(color());
     return false;
 }
 
 void ConstantColorAnimation::animationStop(Laumio &laumio) {
-    laumio.send_color(0xFF, Qt::black);
+    laumio.send_color(Qt::black);
 }
 
 void ConstantColorAnimation::loadFromJSON(const QJsonObject & obj) {
