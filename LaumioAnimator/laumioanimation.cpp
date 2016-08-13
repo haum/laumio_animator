@@ -12,6 +12,9 @@ std::map <QString, std::unique_ptr <Animation> (*)()> LaumioAnimation::sFactorie
 };
 
 LaumioAnimation::LaumioAnimation(QObject * parent) : QAbstractListModel(parent) {
+    m_play_timer.setSingleShot(false);
+    m_play_timer.setInterval(100);
+    QObject::connect(&m_play_timer, &QTimer::timeout, this, &LaumioAnimation::playContinue);
 }
 
 int LaumioAnimation::rowCount(const QModelIndex &parent) const {
@@ -141,4 +144,84 @@ void LaumioAnimation::saveToFile(QString filename) {
     if (!f.open(QFile::ReadWrite))
         return;
     f.write(doc.toJson());
+}
+
+void LaumioAnimation::play() {
+    m_play_playing.clear();
+    m_play_toBePlayed.clear();
+    m_play_start = std::chrono::system_clock::now();
+
+    // Create a list of animations to be played sorted by start time
+    for (auto & laumioinfo : m_laumios) {
+        for (auto & ani : laumioinfo.animations) {
+            PlayAnim item{ani, laumioinfo.laumio.get()};
+            m_play_toBePlayed.insert(
+                        std::upper_bound(
+                            m_play_toBePlayed.begin(),
+                            m_play_toBePlayed.end(),
+                            item,
+                            [](const PlayAnim &a, const PlayAnim &b) {
+                                return a.anim->fromStart() < b.anim->fromStart();
+                            }),
+                        item
+                    );
+        }
+    }
+
+    m_play_timer.start();
+    playContinue();
+}
+
+void LaumioAnimation::playContinue() {
+    double now = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now() - m_play_start).count() / 1000.0;
+
+    // Start animations that need to
+    auto itBegin = std::begin(m_play_toBePlayed);
+    auto itEnd = std::end(m_play_toBePlayed);
+    auto it = itBegin;
+    while (it != itEnd && it->anim->fromStart() <= now) {
+        bool update = it->anim->animationStart(*(it->laumio));
+        if (update)
+            m_play_playing.push_back(*it);
+        else
+            m_play_toBeDeleted.push_back(*it);
+        ++it;
+    }
+    if (it != itBegin)
+        m_play_toBePlayed.erase(itBegin, it);
+
+    // Update animations
+    itBegin = std::begin(m_play_playing);
+    itEnd = std::end(m_play_playing);
+    it = itBegin;
+    while (it != itEnd) {
+        bool update = it->anim->animationUpdate(*(it->laumio), now);
+        if (!update) {
+            m_play_toBeDeleted.push_back(*it);
+            auto itRm = it;
+            ++it;
+            m_play_playing.erase(itRm);
+        } else {
+            ++it;
+        }
+    }
+
+    // Delete animations
+    itBegin = std::begin(m_play_toBeDeleted);
+    itEnd = std::end(m_play_toBeDeleted);
+    it = itBegin;
+    while (it != itEnd) {
+        if (it->anim->fromStart() + it->anim->duration() <= now) {
+            it->anim->animationStop(*(it->laumio));
+           auto itRm = it;
+            ++it;
+            m_play_toBeDeleted.erase(itRm);
+        } else {
+            ++it;
+        }
+    }
+
+    // Stop animations
+    if (m_play_toBePlayed.empty() && m_play_playing.empty() && m_play_toBeDeleted.empty())
+        m_play_timer.stop();
 }

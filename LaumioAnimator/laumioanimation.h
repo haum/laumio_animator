@@ -2,10 +2,12 @@
 #define LAUMIOANIMATION_H
 
 #include <QAbstractListModel>
+#include <QTimer>
 #include <QObject>
 #include <memory>
 #include <vector>
 #include <map>
+#include <chrono>
 #include "animation.h"
 #include "laumio.h"
 
@@ -59,6 +61,9 @@ public slots:
       */
     void saveToFile(QString filename);
 
+    /** Play animation **/
+    void play();
+
 private:
     /** Factories **/
     static std::map <QString, std::unique_ptr <Animation> (*)()> sFactories;
@@ -74,6 +79,29 @@ private:
 
     /** Storage for created animations **/
     std::vector <std::unique_ptr<Animation>> m_animationsStorage;
+
+    /** Callback to continue playing **/
+    void playContinue();
+
+    /** Timer to play animations */
+    QTimer m_play_timer;
+
+    /** Current playing time **/
+    std::chrono::system_clock::time_point m_play_start;
+
+    struct PlayAnim {
+        Animation* anim;
+        Laumio * laumio;
+    };
+
+    /** List of aimations to be played **/
+    std::list <PlayAnim> m_play_toBePlayed;
+
+    /** List of aimations playing **/
+    std::list <PlayAnim> m_play_playing;
+
+    /** List of aimations to be deleted **/
+    std::list <PlayAnim> m_play_toBeDeleted;
 };
 
 #endif // LAUMIOANIMATION_H
