@@ -141,7 +141,11 @@ RPanel {
 
                     onColorChanged: {
                         if (selectedLaumio) {
-                            selectedLaumio.send_color(ledField.text, color);
+                            if (ledField.text == 255) {
+                                selectedLaumio.send_color(color);
+                            } else {
+                                selectedLaumio.send_color(ledField.text, color);
+                            }
                         }
                     }
 
@@ -241,7 +245,14 @@ RPanel {
 
                 LAButton {
                     text: "Go !"
-                    onClicked: selectedLaumio.animate(animationItem.get(listAnimation.currentIndex).value , "black")
+                    onClicked: {
+                        var animationName = animationItem.get(listAnimation.currentIndex).value;
+                        if (animationName == "rainbow") {
+                            selectedLaumio.animRaindow();
+                        } else if (animationName == "colorWipe") {
+                            selectedLaumio.animColorWipe("black");
+                        }
+                    }
                 }
             }
         }

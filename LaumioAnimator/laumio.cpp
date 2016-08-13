@@ -1,6 +1,8 @@
 #include "laumio.h"
 #include <QJsonObject>
 
+QUdpSocket Laumio::sock;
+
 Laumio::Laumio(QObject * parent) : QObject(parent) {
 }
 
@@ -22,39 +24,37 @@ void Laumio::saveToJSON(QJsonObject & obj) {
 
 void Laumio::send_color(int led, QColor color) {
     char data[5];
-    int len = 0;
-    if (led != 255) {
-        data[0] = 0;
-        data[1] = led;
-        data[2] = color.red();
-        data[3] = color.green();
-        data[4] = color.blue();
-        len = 5;
-    } else {
-        data[0] = led;
-        data[1] = color.red();
-        data[2] = color.green();
-        data[3] = color.blue();
-        len = 4;
-    }
-    m_color = color;
-    emit colorChanged();
-    sock.writeDatagram(data, len, QHostAddress(m_ip), m_port);
+    data[0] = 0;
+    data[1] = led;
+    data[2] = color.red();
+    data[3] = color.green();
+    data[4] = color.blue();
+    sock.writeDatagram(data, sizeof(data), QHostAddress(m_ip), m_port);
 }
 
-void Laumio::animate(QString animation = "default", QColor color = "black") {
+void Laumio::send_color(QColor color) {
+    char data[4];
+    data[0] = 0xff;
+    data[1] = color.red();
+    data[2] = color.green();
+    data[3] = color.blue();
+    m_color = color;
+    emit colorChanged();
+    sock.writeDatagram(data, sizeof(data), QHostAddress(m_ip), m_port);
+}
+
+void Laumio::animRaindow() {
+    char data[1];
+    data[0] = 10;
+    sock.writeDatagram(data, sizeof(data), QHostAddress(m_ip), m_port);
+}
+
+void Laumio::animColorWipe(QColor color, uint8_t duration) {
     char data[5];
-    int len = 0;
-    if (animation == "rainbow") {
-        data[0] = 10;
-        len = 1;
-    } else if (animation == "colorWipe") {
-        data[0] = 11;
-        data[1] = color.red();
-        data[2] = color.green();
-        data[3] = color.blue();
-        data[4] = 100;
-        len = 5;
-    }
-    sock.writeDatagram(data, len, QHostAddress(m_ip), m_port);
+    data[0] = 11;
+    data[1] = color.red();
+    data[2] = color.green();
+    data[3] = color.blue();
+    data[4] = duration;
+    sock.writeDatagram(data, sizeof(data), QHostAddress(m_ip), m_port);
 }
