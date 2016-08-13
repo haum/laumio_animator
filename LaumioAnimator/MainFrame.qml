@@ -125,15 +125,19 @@ Item {
                     onRemoveMe: anim.deleteLaumio(index)
                 }
             }
-            LAButton {
-                anchors.horizontalCenter: parent.horizontalCenter
-                text: "New Laumio"
-                onClicked: anim.newLaumio()
-            }
-            LAButton {
-                anchors.horizontalCenter: parent.horizontalCenter
-                text: "New Animation"
-                onClicked: anim.newAnim()
+            Column {
+                width: parent.width
+                spacing: 10
+                LAButton {
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    text: "New Laumio"
+                    onClicked: anim.newLaumio()
+                }
+                LAButton {
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    text: "New Animation"
+                    onClicked: anim.newAnim()
+                }
             }
         }
         Loader {
