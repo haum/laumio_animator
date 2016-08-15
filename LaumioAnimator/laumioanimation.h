@@ -47,9 +47,10 @@ public slots:
     static QStringList factoriesNames();
 
     /** Add new (default constructed) animation
+      * @param index       Index of laumio
       * @param factoryName Factory's code name
       */
-    void newAnimation(QString factoryName);
+    void newAnimation(int index, QString factoryName);
 
     /** Load config from file
       * @param filename Filename to parse

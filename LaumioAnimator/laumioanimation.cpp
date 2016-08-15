@@ -73,13 +73,14 @@ QStringList LaumioAnimation::factoriesNames() {
     return ret;
 }
 
-void LaumioAnimation::newAnimation(QString factoryName) {
+void LaumioAnimation::newAnimation(int idx, QString factoryName) {
     auto itFactory = sFactories.find(factoryName);
     if (itFactory != std::end(sFactories)) {
         auto anim = (*itFactory->second)();
         auto * animptr = anim.get();
         m_animationsStorage.push_back(std::move(anim));
-        m_laumios.back().animations.push_back(animptr);
+        m_laumios[idx].animations.push_back(animptr);
+        dataChanged(index(idx), index(idx), {AnimationsRole});
     }
 }
 
