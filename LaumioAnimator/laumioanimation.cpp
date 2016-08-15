@@ -200,7 +200,7 @@ void LaumioAnimation::playContinue() {
     itEnd = std::end(m_play_playing);
     it = itBegin;
     while (it != itEnd) {
-        bool update = it->anim->animationUpdate(*(it->laumio), now);
+        bool update = it->anim->animationUpdate(*(it->laumio), now - it->anim->fromStart());
         if (!update || it->anim->fromStart() + it->anim->duration() <= now) {
             m_play_toBeDeleted.push_back(*it);
             auto itRm = it;
