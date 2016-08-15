@@ -63,6 +63,10 @@ Item {
                 text: "Map"
                 onClicked: rightZoneLoader.source = "MapRPanel.qml"
             }
+            LAButton {
+                text: "PLAY"
+                onClicked: anim.play()
+            }
         }
     }
     Rectangle {
