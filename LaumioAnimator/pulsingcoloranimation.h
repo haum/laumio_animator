@@ -23,10 +23,10 @@ class PulsingColorAnimation : public Animation
     /** Property storing amplitude parameter of color variation **/
     SimplerPROP(QRgb, varColor, qRgb(0,0,0))
 
-    /** Property storing pulsation signal **/
+    /** Property storing pulsation signal, in rad/s **/
     SimplerPROP(double, pulsation, 0.0)
 
-    /** Property storing phase-delay signal from start **/
+    /** Property storing phase-delay signal from start, in seconds **/
     SimplerPROP(double, delay, 0.0)
 
 public:
@@ -48,11 +48,13 @@ public:
     virtual void loadFromJSON(const QJsonObject & obj) override;
     virtual void saveToJSON(QJsonObject & obj) override;
 
+    QString signalName() { return m_signalName; };
     void set_signal(QString name);
 
 private:
     bool done = false;
 
+    QString m_signalName = "sinus";
     void (PulsingColorAnimation::*pulse_signal)(double time);
     void sinus_signal(double time);
 };

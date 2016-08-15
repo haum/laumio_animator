@@ -9,6 +9,7 @@ PulsingColorAnimation::PulsingColorAnimation(QObject * parent) : Animation("Puls
 }
 
 bool PulsingColorAnimation::animationStart(Laumio &laumio) {
+    (this->*pulse_signal)(0.0);
     laumio.send_color(color());
     return true;
 }
@@ -34,6 +35,7 @@ void PulsingColorAnimation::loadFromJSON(const QJsonObject & obj) {
     }
     if (obj.contains("frequency")) set_pulsation(obj["frequency"].toDouble() * M_PI);
     if (obj.contains("delay")) set_delay(obj["delay"].toDouble());
+    if (obj.contains("signal")) set_signal(obj["signal"].toString());
 }
 
 void PulsingColorAnimation::saveToJSON(QJsonObject & obj) {
@@ -45,6 +47,7 @@ void PulsingColorAnimation::saveToJSON(QJsonObject & obj) {
     obj["higher_color"] = higherColor.name();
     obj["frequency"] = pulsation() / (2 * M_PI);
     obj["delay"] = delay();
+    obj["signal"] = signalName();
 }
 
 
@@ -52,8 +55,10 @@ void PulsingColorAnimation::set_signal(QString name) {
     if (name == "sinus") {
         pulse_signal = &PulsingColorAnimation::sinus_signal;
     } else {
+        name = "sinus";
         pulse_signal = &PulsingColorAnimation::sinus_signal;
     }
+    m_signalName = name;
 }
 
 void PulsingColorAnimation::sinus_signal(double time) {
