@@ -104,6 +104,7 @@ Item {
         Column {
             id: listColumn
             property var selected: undefined
+            property int selectedIndex: undefined
             anchors {
                 top: parent.top
                 topMargin: 10
@@ -117,10 +118,13 @@ Item {
                     laumio: model.laumio
                     selected: listColumn.selected == this
                     onClicked: {
-                        if (listColumn.selected == this)
+                        if (listColumn.selected == this) {
                             listColumn.selected = undefined;
-                        else
+                            listColumn.selectedIndex = -1;
+                        } else {
                             listColumn.selected = this;
+                            listColumn.selectedIndex = index;
+                        }
                     }
                     onRemoveMe: anim.deleteLaumio(index)
                 }
@@ -133,10 +137,14 @@ Item {
                     text: "New Laumio"
                     onClicked: anim.newLaumio()
                 }
-                LAButton {
-                    anchors.horizontalCenter: parent.horizontalCenter
-                    text: "New Animation"
-                    onClicked: anim.newAnim()
+                Repeater {
+                    model: anim.factoriesNames()
+                    delegate: LAButton {
+                        visible: listColumn.selected !== undefined
+                        anchors.horizontalCenter: parent.horizontalCenter
+                        text: "New " + modelData
+                        onClicked: anim.newAnimation(listColumn.selectedIndex, modelData)
+                    }
                 }
             }
         }
