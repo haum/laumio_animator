@@ -19,18 +19,4 @@
     private: \
         TYPE m_##NAME {DEFAULT};
 
-
-#define SimplerPROP(TYPE, NAME, DEFAULT) \
-    public: \
-        void set_##NAME(TYPE NAME) { \
-            if (m_##NAME != NAME) { \
-                m_##NAME = NAME; \
-            } \
-        } \
-        TYPE NAME() { \
-            return m_##NAME;\
-        } \
-    private: \
-        TYPE m_##NAME {DEFAULT};
-
 #endif // MACRODEGEU_H
