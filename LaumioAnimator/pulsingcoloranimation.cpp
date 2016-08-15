@@ -62,5 +62,6 @@ void PulsingColorAnimation::set_signal(QString name) {
 }
 
 void PulsingColorAnimation::sinus_signal(double time) {
-    color().setRgb(meanColor() + varColor() * std::sin(pulsation() * (time - delay())));
+    QRgb newColor = meanColor() + QRgb(varColor() * std::sin(pulsation() * (time - delay())));
+    m_color.setRgb(newColor);
 }
