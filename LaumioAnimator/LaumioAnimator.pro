@@ -8,7 +8,8 @@ SOURCES += main.cpp \
     laumioanimation.cpp \
     animation.cpp \
     constantcoloranimation.cpp \
-    pulsingcoloranimation.cpp
+    pulsingcoloranimation.cpp \
+    progressivecoloranimation.cpp
 
 RESOURCES += qml.qrc
 
@@ -20,4 +21,5 @@ HEADERS += \
     animation.h \
     constantcoloranimation.h \
     pulsingcoloranimation.h \
+    progressivecoloranimation.h \
     macrodegeu.h
