@@ -6,9 +6,11 @@
 #include <QJsonObject>
 
 #include "constantcoloranimation.h"
+#include "pulsingcoloranimation.h"
 
 std::map <QString, std::unique_ptr <Animation> (*)()> LaumioAnimation::sFactories {
-    {"ConstantColor", &ConstantColorAnimation::factory}
+    {"ConstantColor", &ConstantColorAnimation::factory},
+    {"PulsingColor", &PulsingColorAnimation::factory}
 };
 
 LaumioAnimation::LaumioAnimation(QObject * parent) : QAbstractListModel(parent) {
