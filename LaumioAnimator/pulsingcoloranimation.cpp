@@ -28,10 +28,10 @@ void PulsingColorAnimation::loadFromJSON(const QJsonObject & obj) {
     if (obj.contains("fromStart")) set_fromStart(obj["fromStart"].toDouble());
     if (obj.contains("duration")) set_duration(obj["duration"].toDouble());
     if (obj.contains("lower_color") and obj.contains("higher_color")) {
-        QRgb lowerColor = QColor(obj["lower_color"].toString()).rgb();
-        QRgb higherColor = QColor(obj["higher_color"].toString()).rgb();
-        set_meanColor((higherColor + lowerColor) / 2);
-        set_varColor((higherColor - lowerColor) / 2);
+        QColor lowerColor = QColor(obj["lower_color"].toString());
+        QColor higherColor = QColor(obj["higher_color"].toString());
+        set_meanColor(QColor((higherColor.red() + lowerColor.red()) / 2, (higherColor.green() + lowerColor.green()) / 2, (higherColor.blue() + lowerColor.blue()) / 2));
+        set_varColor(QColor((higherColor.red() - lowerColor.red()) / 2, (higherColor.green() - lowerColor.green()) / 2, (higherColor.blue() - lowerColor.blue()) / 2));
     }
     if (obj.contains("frequency")) set_pulsation(obj["frequency"].toDouble() * M_PI);
     if (obj.contains("delay")) set_delay(obj["delay"].toDouble());
@@ -41,9 +41,9 @@ void PulsingColorAnimation::loadFromJSON(const QJsonObject & obj) {
 void PulsingColorAnimation::saveToJSON(QJsonObject & obj) {
     obj["fromStart"] = fromStart();
     obj["duration"] = duration();
-    QColor lowerColor(meanColor() - varColor());
+    QColor lowerColor(meanColor().red() - varColor().red(), meanColor().green() - varColor().green(), meanColor().blue() - varColor().blue());
     obj["lower_color"] = lowerColor.name();
-    QColor higherColor(meanColor() + varColor());
+    QColor higherColor(meanColor().red() + varColor().red(), meanColor().green() + varColor().green(), meanColor().blue() + varColor().blue());
     obj["higher_color"] = higherColor.name();
     obj["frequency"] = pulsation() / (2 * M_PI);
     obj["delay"] = delay();
@@ -62,6 +62,31 @@ void PulsingColorAnimation::set_signal(QString name) {
 }
 
 void PulsingColorAnimation::sinus_signal(double time) {
-    QRgb newColor = meanColor() + QRgb(varColor() * std::sin(pulsation() * (time - delay())));
-    m_color.setRgb(newColor);
+    double fac = std::sin(pulsation() * (time - delay()));
+    /*
+    QColor meanHSV = meanColor().toHsv();
+    QColor varHSV = varColor().toHsv();
+    int h = meanHSV.hue() + int(fac * varHSV.hue());
+    if (h>255) h=255;
+    if (h<0) h=0;
+    int s = meanHSV.saturation() + int(fac * varHSV.saturation());
+    if (s>255) s=255;
+    if (s<0) s=0;
+    int v = meanHSV.value() + int(fac * varHSV.value());
+    if (v>255) v=255;
+    if (v<0) v=0;
+    m_color.setHsv(h, s, v) ;
+    */
+
+    int r = meanColor().red() + int(fac * varColor().red());
+    if (r>255) r-=255;
+    if (r<0) r+=255;
+    int g = meanColor().green() + int(fac * varColor().green());
+    if (g>255) g-=255;
+    if (g<0) g+=255;
+    int b = meanColor().blue() + int(fac * varColor().blue());
+    if (b>255) b-=255;
+    if (b<0) b+=255;
+    m_color.setRgb(r, g, b);
+
 }

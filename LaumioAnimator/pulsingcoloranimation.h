@@ -18,10 +18,10 @@ class PulsingColorAnimation : public Animation
     PROP(QColor, color, "black")
 
     /** Property storing mean color parameter **/
-    SimplerPROP(QRgb, meanColor, qRgb(0x80,0x80,0x80))
+    SimplerPROP(QColor, meanColor, QColor(0x80,0x80,0x80))
 
     /** Property storing amplitude parameter of color variation **/
-    SimplerPROP(QRgb, varColor, qRgb(0x7f,0x7f,0x7f))
+    SimplerPROP(QColor, varColor, QColor(0x7f,0x7f,0x7f))
 
     /** Property storing pulsation signal, in rad/s **/
     SimplerPROP(double, pulsation, 2 * M_PI)
