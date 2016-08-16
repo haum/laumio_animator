@@ -14,6 +14,7 @@ RPanel {
                 id: laumioRepeater
                 model: anim
                 delegate: AnimationLane {
+                    laumio: index
                     property var laneModel: model
                     width: parent.width - 10
                     height: 50

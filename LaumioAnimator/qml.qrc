@@ -12,5 +12,7 @@
         <file>PreviewRPanel.qml</file>
         <file>MapRPanel.qml</file>
         <file>AnimationLane.qml</file>
+        <file>animations/LAConstantColor.qml</file>
+        <file>animations/LAAnimationPopup.qml</file>
     </qresource>
 </RCC>

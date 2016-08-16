@@ -50,7 +50,7 @@ public slots:
       * @param index       Index of laumio
       * @param factoryName Factory's code name
       */
-    void newAnimation(int index, QString factoryName);
+    Animation* newAnimation(int index, QString factoryName);
 
     /** Load config from file
       * @param filename Filename to parse

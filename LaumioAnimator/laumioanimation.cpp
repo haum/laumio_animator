@@ -4,6 +4,7 @@
 #include <QJsonDocument>
 #include <QJsonArray>
 #include <QJsonObject>
+#include <QQmlEngine>
 
 #include "constantcoloranimation.h"
 #include "pulsingcoloranimation.h"
@@ -75,7 +76,7 @@ QStringList LaumioAnimation::factoriesNames() {
     return ret;
 }
 
-void LaumioAnimation::newAnimation(int idx, QString factoryName) {
+Animation* LaumioAnimation::newAnimation(int idx, QString factoryName) {
     auto itFactory = sFactories.find(factoryName);
     if (itFactory != std::end(sFactories)) {
         auto anim = (*itFactory->second)();
@@ -83,7 +84,10 @@ void LaumioAnimation::newAnimation(int idx, QString factoryName) {
         m_animationsStorage.push_back(std::move(anim));
         m_laumios[idx].animations.push_back(animptr);
         dataChanged(index(idx), index(idx), {AnimationsRole});
+        QQmlEngine::setObjectOwnership(animptr, QQmlEngine::CppOwnership);
+        return animptr;
     }
+    return nullptr;
 }
 
 void LaumioAnimation::loadFromFile(QString filename) {
