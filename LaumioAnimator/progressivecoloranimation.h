@@ -18,10 +18,10 @@ class ProgressiveColorAnimation : public Animation
     PROP(QColor, color, "black")
 
     /** Property storing first color parameter **/
-    SimplerPROP(QColor, firstColor, QColor(0x00,0x00,0x00))
+    PROP(QColor, firstColor, QColor(0x00,0x00,0x00))
 
     /** Property storing last color parameter **/
-    SimplerPROP(QColor, lastColor, QColor(0xff,0xff,0xff))
+    PROP(QColor, lastColor, QColor(0xff,0xff,0xff))
 
 public:
     /** Factory function to create the animation
