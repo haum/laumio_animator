@@ -33,6 +33,13 @@ RPanel {
                                         modelData.fromStart = parent.x / timeExpand
                                     }
                                 }
+                                onClicked:{
+                                    var component = Qt.createComponent("animations/LA" + modelData.name +".qml")
+                                    component.animation = modelData
+                                    if (component.status === Component.Ready) {
+                                        var dialog = component.createObject(parent,{animation: modelData});
+                                    }
+                                }
                             }
 
                             property real timeExpand: 100

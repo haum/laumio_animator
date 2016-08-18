@@ -5,7 +5,6 @@ import "../widgets"
 
 Dialog {
     id: constantColorPopup
-    property int laumioIdx
     property var animation
     visible: true
     title: "Constant Color Animation"
@@ -61,7 +60,7 @@ Dialog {
             width: 160
         }
         LAButton {
-            text: "Create constant color animation"
+            text: "Save constant color animation"
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.bottom: parent.bottom
             anchors.bottomMargin: 20

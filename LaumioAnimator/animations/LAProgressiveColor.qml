@@ -5,7 +5,7 @@ import "../widgets"
 
 Dialog {
     id: progressiveColorPopup
-    property int laumioIdx
+    property var animation
     visible: true
     title: "Progressive Color Animation"
     modality: Qt.WindowModal
@@ -27,6 +27,7 @@ Dialog {
             anchors.top: parent.top
             anchors.leftMargin: 20
             anchors.topMargin: 20
+            text: animation.firstColor
             width: 150
         }
         Text{
@@ -42,6 +43,7 @@ Dialog {
             anchors.top: parent.top
             anchors.leftMargin: 20
             anchors.topMargin: 20
+            text: animation.lastColor
             width: 150
         }
 
@@ -57,6 +59,7 @@ Dialog {
             anchors.top: animFirstColor.bottom
             anchors.left: animFirstColor.left
             anchors.topMargin: 20
+            text: animation.fromStart
             width: 150
         }
         Text{
@@ -71,16 +74,16 @@ Dialog {
             anchors.top: animLastColor.bottom
             anchors.left: animLastColor.left
             anchors.topMargin: 20
+            text: animation.duration
             width: 150
         }
         LAButton {
-            text: "Create progressive color animation"
+            text: "Save progressive color animation"
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.bottom: parent.bottom
             anchors.bottomMargin: 20
             height: 40
             onClicked: {
-                var animation = anim.newAnimation(laumioIdx, "ProgressiveColor")
                 animation.firstColor = animFirstColor.text
                 animation.lastColor = animLastColor.text
                 animation.fromStart = parseFloat(beginning.text)

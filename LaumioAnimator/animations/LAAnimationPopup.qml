@@ -36,10 +36,10 @@ Dialog {
             anchors.bottomMargin: 20
             height: 40
             onClicked: {
-                console.log(Qt.resolvedUrl("LA" + animChoice.currentText + ".qml"))
+                var animation = anim.newAnimation(laumioIndex, animChoice.currentText)
                 var component = Qt.createComponent(Qt.resolvedUrl("LA" + animChoice.currentText + ".qml"))
                 if (component.status === Component.Ready) {
-                    var dialog = component.createObject(parent, {laumioIdx: laumioIndex})
+                    var dialog = component.createObject(parent, {animation: animation})
                 } else console.log(component.errorString())
                 animationPopup.close()
             }
