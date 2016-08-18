@@ -108,7 +108,7 @@ Item {
         Column {
             id: listColumn
             property var selected: undefined
-            property int selectedIndex: undefined
+            property int selectedIndex: -1
             anchors {
                 top: parent.top
                 topMargin: 10
