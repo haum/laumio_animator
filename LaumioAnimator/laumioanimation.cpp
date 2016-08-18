@@ -117,7 +117,11 @@ void LaumioAnimation::loadFromFile(QString filename) {
         return;
 
     QJsonDocument doc = QJsonDocument::fromJson(f.readAll());
-    QJsonArray array = doc.array();
+    QJsonObject rootobj = doc.object();
+    if (rootobj.contains("audioSource"))
+            set_audioSource(rootobj["audioSource"].toString());
+
+    QJsonArray array = rootobj["animations"].toArray();
     beginInsertRows(QModelIndex(), 0, array.size()-1);
     for (auto elem : array) {
         auto channel = elem.toObject();
@@ -164,7 +168,10 @@ void LaumioAnimation::saveToFile(QString filename) {
         channel["anims"] = animarray;
         array.append(channel);
     }
-    doc.setArray(array);
+    QJsonObject rootobj;
+    rootobj["audioSource"] = audioSource();
+    rootobj["animations"] = array;
+    doc.setObject(rootobj);
 
     QFile f(QUrl(filename).toLocalFile());
     if (!f.open(QFile::ReadWrite))

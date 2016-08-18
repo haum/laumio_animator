@@ -16,6 +16,7 @@
 class LaumioAnimation : public QAbstractListModel {
     Q_OBJECT
 
+    PROP(QString, audioSource, "")
     PROP(bool, playing, false)
 
 public:
