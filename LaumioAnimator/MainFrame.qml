@@ -1,11 +1,16 @@
 import QtQuick 2.0
 import QtQuick.Dialogs 1.0
+import QtMultimedia 5.0
 import Laumio 1.0
 import "widgets"
 
 Item {
     LaumioAnimation {
         id: anim
+    }
+    Audio {
+        id: audio
+        source: anim.audioSource
     }
     Rectangle {
         id: header
@@ -64,9 +69,32 @@ Item {
                 onClicked: rightZoneLoader.source = "MapRPanel.qml"
             }
             LAButton {
-                text: "PLAY"
-                onClicked: anim.play()
+                property bool playing: (audio.playbackState == Audio.PlayingState) || anim.playing
+                text: playing ? "STOP" : "PLAY"
+                onClicked: {
+                    if (playing) {
+                        audio.stop();
+                        anim.stop();
+                    } else {
+                        audio.play();
+                        anim.play();
+                    }
+                }
             }
+        }
+    }
+    MouseArea {
+        id: audioTime
+        anchors {
+            top: parent.top
+            left: parent.left
+            right: parent.right
+        }
+        height: 10
+        Rectangle {
+            color: "#ffff00"
+            height: parent.height
+            width: parent.width * audio.position / audio.duration
         }
     }
     Rectangle {
