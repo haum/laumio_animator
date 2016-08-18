@@ -141,15 +141,6 @@ Item {
                     text: "New Laumio"
                     onClicked: anim.newLaumio()
                 }
-                Repeater {
-                    model: anim.factoriesNames()
-                    delegate: LAButton {
-                        visible: listColumn.selected !== undefined
-                        anchors.horizontalCenter: parent.horizontalCenter
-                        text: "New " + modelData
-                        onClicked: anim.newAnimation(listColumn.selectedIndex, modelData)
-                    }
-                }
             }
         }
         Loader {
