@@ -74,6 +74,9 @@ public slots:
     /** Play animation **/
     void play();
 
+    /** Stop animation **/
+    void stop();
+
 private:
     /** Factories **/
     static std::map <QString, std::unique_ptr <Animation> (*)()> sFactories;
