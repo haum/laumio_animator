@@ -8,12 +8,15 @@
 #include <vector>
 #include <map>
 #include <chrono>
+#include "macrodegeu.h"
 #include "animation.h"
 #include "laumio.h"
 
 /** Class to manage animations **/
 class LaumioAnimation : public QAbstractListModel {
     Q_OBJECT
+
+    PROP(bool, playing, false)
 
 public:
     /** Enumation of model roles **/

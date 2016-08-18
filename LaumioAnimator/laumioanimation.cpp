@@ -171,6 +171,7 @@ void LaumioAnimation::saveToFile(QString filename) {
 }
 
 void LaumioAnimation::play() {
+    set_playing(true);
     m_play_playing.clear();
     m_play_toBePlayed.clear();
     m_play_start = std::chrono::system_clock::now();
@@ -246,6 +247,8 @@ void LaumioAnimation::playContinue() {
     }
 
     // Stop animations
-    if (m_play_toBePlayed.empty() && m_play_playing.empty() && m_play_toBeDeleted.empty())
+    if (m_play_toBePlayed.empty() && m_play_playing.empty() && m_play_toBeDeleted.empty()) {
         m_play_timer.stop();
+        set_playing(false);
+    }
 }
