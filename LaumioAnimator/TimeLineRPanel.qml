@@ -33,11 +33,17 @@ RPanel {
                                         modelData.fromStart = parent.x / timeExpand
                                     }
                                 }
+                                acceptedButtons: Qt.LeftButton | Qt.RightButton
                                 onClicked:{
-                                    var component = Qt.createComponent("animations/LA" + modelData.name +".qml")
-                                    component.animation = modelData
-                                    if (component.status === Component.Ready) {
-                                        var dialog = component.createObject(parent,{animation: modelData});
+                                    if (mouse.button & Qt.LeftButton){
+                                        var component = Qt.createComponent("animations/LA" + modelData.name +".qml")
+                                        component.animation = modelData
+                                        if (component.status === Component.Ready) {
+                                            var dialog = component.createObject(parent,{animation: modelData});
+                                        }
+                                    }
+                                    else if (mouse.button & Qt.RightButton){
+                                        anim.deleteAnimation(laumio, index)
                                     }
                                 }
                             }

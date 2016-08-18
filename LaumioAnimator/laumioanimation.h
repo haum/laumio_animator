@@ -52,6 +52,12 @@ public slots:
       */
     Animation* newAnimation(int index, QString factoryName);
 
+    /** Remove animation
+      * @param laumioNb    Index of laumio
+      * @param index       Index of animation
+      */
+    void deleteAnimation(int laumioNb, int index);
+
     /** Load config from file
       * @param filename Filename to parse
       */

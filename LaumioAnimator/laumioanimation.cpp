@@ -90,6 +90,21 @@ Animation* LaumioAnimation::newAnimation(int idx, QString factoryName) {
     return nullptr;
 }
 
+void LaumioAnimation::deleteAnimation(int laumioNb, int idx) {
+    if (laumioNb < 0 || laumioNb > (long) m_laumios.size())
+        return;
+    auto itAnim = std::find_if(m_animationsStorage.begin(), m_animationsStorage.end(), [&](std::unique_ptr<Animation>& ptr){
+        return ptr.get() == m_laumios[laumioNb].animations[idx];
+    });
+    auto it = m_laumios[laumioNb].animations.begin();
+    if(itAnim == m_animationsStorage.end() || it == m_laumios.end())
+        return;
+    std::advance(it, idx);
+    m_laumios[laumioNb].animations.erase(it);
+    m_animationsStorage.erase(itAnim);
+    dataChanged(index(laumioNb), index(laumioNb), {AnimationsRole});
+}
+
 void LaumioAnimation::loadFromFile(QString filename) {
     beginResetModel();
     m_laumios.clear();
