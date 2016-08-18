@@ -1,4 +1,4 @@
-import QtQuick 2.7
+import QtQuick 2.0
 import QtQuick.Controls 1.2
 import QtQuick.Dialogs 1.2
 import "../widgets"
@@ -6,6 +6,7 @@ import "../widgets"
 Dialog {
     id: constantColorPopup
     property int laumioIdx
+    property var animation
     visible: true
     title: "Constant Color Animation"
     modality: Qt.WindowModal
@@ -26,6 +27,7 @@ Dialog {
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.top: parent.top
             anchors.topMargin: 20
+            text: animation.color
             width: 340
         }
         Text{
@@ -40,6 +42,7 @@ Dialog {
             anchors.top: animColor.bottom
             anchors.left: animColor.left
             anchors.topMargin: 20
+            text: animation.fromStart.toString()
             width: 160
         }
         Text{
@@ -54,6 +57,7 @@ Dialog {
             anchors.top: animColor.bottom
             anchors.right: animColor.right
             anchors.topMargin: 20
+            text: animation.duration.toString()
             width: 160
         }
         LAButton {
@@ -63,7 +67,6 @@ Dialog {
             anchors.bottomMargin: 20
             height: 40
             onClicked: {
-                var animation = anim.newAnimation(laumioIdx, "ConstantColor")
                 animation.color = animColor.text
                 animation.fromStart = parseFloat(beginning.text)
                 animation.duration = parseFloat(duration.text)
