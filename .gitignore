@@ -1,3 +1,9 @@
 build-*
 *.pro.user
 *.autosave
+*.o
+moc_*
+*.json
+.qmake*
+LaumioAnimator/LaumioAnimator
+qrc_qml*
