@@ -42,13 +42,13 @@ public:
     virtual void loadFromJSON(const QJsonObject & obj) override;
     virtual void saveToJSON(QJsonObject & obj) override;
 
-    QString signalName() { return m_signalName ; }
-    void set_signal(QString name);
+    QString slopeSignalName() { return m_slopeSignalName ; }
+    void set_slopeSignal(QString name);
 
 private:
     bool done = false;
 
-    QString m_signalName = "sinus";
+    QString m_slopeSignalName = "sinus";
     void (ProgressiveColorAnimation::*slopeSignal)(double time) = &ProgressiveColorAnimation::linearSignal;
     void linearSignal(double time);
 };

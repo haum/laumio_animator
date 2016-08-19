@@ -48,13 +48,13 @@ public:
     virtual void loadFromJSON(const QJsonObject & obj) override;
     virtual void saveToJSON(QJsonObject & obj) override;
 
-    QString signalName() { return m_signalName ; }
-    void set_signal(QString name);
+    QString pulseSignalName() { return m_pulseSignalName ; }
+    void set_pulseSignal(QString name);
 
 private:
     bool done = false;
 
-    QString m_signalName = "sinus";
+    QString m_pulseSignalName = "sinus";
     void (PulsingColorAnimation::*pulseSignal)(double time) = &PulsingColorAnimation::sinusSignal;
     void sinusSignal(double time);
 };
