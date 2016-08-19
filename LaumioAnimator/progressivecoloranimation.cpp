@@ -9,28 +9,28 @@ ProgressiveColorAnimation::ProgressiveColorAnimation(QObject * parent) : Animati
 }
 
 bool ProgressiveColorAnimation::animationStart(Laumio &laumio) {
-    (this->*slope_signal)(0.0);
+    (this->*slopeSignal)(0.0);
     laumio.send_color(color());
     return true;
 }
 
 bool ProgressiveColorAnimation::animationUpdate(Laumio &laumio, double time) {
-    (this->*slope_signal)(time);
+    (this->*slopeSignal)(time);
     laumio.send_color(color());
     return true;
 }
 
 void ProgressiveColorAnimation::animationStop(Laumio &laumio) {
-    (this->*slope_signal)(duration());
+    (this->*slopeSignal)(duration());
     laumio.send_color(color());
 }
 
 void ProgressiveColorAnimation::loadFromJSON(const QJsonObject & obj) {
     if (obj.contains("fromStart")) set_fromStart(obj["fromStart"].toDouble());
     if (obj.contains("duration")) set_duration(obj["duration"].toDouble());
-    if (obj.contains("first_color") and obj.contains("last_color")) {
-        set_firstColor(QColor(obj["first_color"].toString()));
-        set_lastColor(QColor(obj["last_color"].toString()));
+    if (obj.contains("firstColor") and obj.contains("lastColor")) {
+        set_firstColor(QColor(obj["firstColor"].toString()));
+        set_lastColor(QColor(obj["lastColor"].toString()));
     }
     if (obj.contains("signal")) set_signal(obj["signal"].toString());
 }
@@ -38,23 +38,23 @@ void ProgressiveColorAnimation::loadFromJSON(const QJsonObject & obj) {
 void ProgressiveColorAnimation::saveToJSON(QJsonObject & obj) {
     obj["fromStart"] = fromStart();
     obj["duration"] = duration();
-    obj["first_color"] = firstColor().name();
-    obj["last_color"] = lastColor().name();
+    obj["firstColor"] = firstColor().name();
+    obj["lastColor"] = lastColor().name();
     obj["signal"] = signalName();
 }
 
 
 void ProgressiveColorAnimation::set_signal(QString name) {
     if (name == "linear") {
-        slope_signal = &ProgressiveColorAnimation::linear_signal;
+        slopeSignal = &ProgressiveColorAnimation::linearSignal;
     } else {
         name = "linear";
-        slope_signal = &ProgressiveColorAnimation::linear_signal;
+        slopeSignal = &ProgressiveColorAnimation::linearSignal;
     }
     m_signalName = name;
 }
 
-void ProgressiveColorAnimation::linear_signal(double time) {
+void ProgressiveColorAnimation::linearSignal(double time) {
     double fac = time / duration();
 
     /*

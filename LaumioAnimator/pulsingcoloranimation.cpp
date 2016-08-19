@@ -9,30 +9,30 @@ PulsingColorAnimation::PulsingColorAnimation(QObject * parent) : Animation("Puls
 }
 
 bool PulsingColorAnimation::animationStart(Laumio &laumio) {
-    (this->*pulse_signal)(0.0);
+    (this->*pulseSignal)(0.0);
     laumio.send_color(color());
     return true;
 }
 
 bool PulsingColorAnimation::animationUpdate(Laumio &laumio, double time) {
-    (this->*pulse_signal)(time);
+    (this->*pulseSignal)(time);
     laumio.send_color(color());
     return true;
 }
 
 void PulsingColorAnimation::animationStop(Laumio &laumio) {
-    (this->*pulse_signal)(duration());
+    (this->*pulseSignal)(duration());
     laumio.send_color(color());
 }
 
 void PulsingColorAnimation::loadFromJSON(const QJsonObject & obj) {
     if (obj.contains("fromStart")) set_fromStart(obj["fromStart"].toDouble());
     if (obj.contains("duration")) set_duration(obj["duration"].toDouble());
-    if (obj.contains("lower_color") and obj.contains("higher_color")) {
-        QColor lowerColor = QColor(obj["lower_color"].toString());
-        QColor higherColor = QColor(obj["higher_color"].toString());
-        set_meanColor(QColor((higherColor.red() + lowerColor.red()) / 2, (higherColor.green() + lowerColor.green()) / 2, (higherColor.blue() + lowerColor.blue()) / 2));
-        set_varColor(QColor((higherColor.red() - lowerColor.red()) / 2, (higherColor.green() - lowerColor.green()) / 2, (higherColor.blue() - lowerColor.blue()) / 2));
+    if (obj.contains("lowerColor") and obj.contains("upperColor")) {
+        QColor lowerColor = QColor(obj["lowerColor"].toString());
+        QColor upperColor = QColor(obj["upperColor"].toString());
+        set_meanColor(QColor((upperColor.red() + lowerColor.red()) / 2, (upperColor.green() + lowerColor.green()) / 2, (upperColor.blue() + lowerColor.blue()) / 2));
+        set_varColor(QColor((upperColor.red() - lowerColor.red()) / 2, (upperColor.green() - lowerColor.green()) / 2, (upperColor.blue() - lowerColor.blue()) / 2));
     }
     if (obj.contains("frequency")) set_pulsation(obj["frequency"].toDouble() * M_PI);
     if (obj.contains("delay")) set_delay(obj["delay"].toDouble());
@@ -43,9 +43,9 @@ void PulsingColorAnimation::saveToJSON(QJsonObject & obj) {
     obj["fromStart"] = fromStart();
     obj["duration"] = duration();
     QColor lowerColor(meanColor().red() - varColor().red(), meanColor().green() - varColor().green(), meanColor().blue() - varColor().blue());
-    obj["lower_color"] = lowerColor.name();
-    QColor higherColor(meanColor().red() + varColor().red(), meanColor().green() + varColor().green(), meanColor().blue() + varColor().blue());
-    obj["higher_color"] = higherColor.name();
+    obj["lowerColor"] = lowerColor.name();
+    QColor upperColor(meanColor().red() + varColor().red(), meanColor().green() + varColor().green(), meanColor().blue() + varColor().blue());
+    obj["upperColor"] = upperColor.name();
     obj["frequency"] = pulsation() / (2 * M_PI);
     obj["delay"] = delay();
     obj["signal"] = signalName();
@@ -54,15 +54,15 @@ void PulsingColorAnimation::saveToJSON(QJsonObject & obj) {
 
 void PulsingColorAnimation::set_signal(QString name) {
     if (name == "sinus") {
-        pulse_signal = &PulsingColorAnimation::sinus_signal;
+        pulseSignal = &PulsingColorAnimation::sinusSignal;
     } else {
         name = "sinus";
-        pulse_signal = &PulsingColorAnimation::sinus_signal;
+        pulseSignal = &PulsingColorAnimation::sinusSignal;
     }
     m_signalName = name;
 }
 
-void PulsingColorAnimation::sinus_signal(double time) {
+void PulsingColorAnimation::sinusSignal(double time) {
     double fac = std::sin(pulsation() * (time - delay()));
     /*
     QColor meanHSV = meanColor().toHsv();

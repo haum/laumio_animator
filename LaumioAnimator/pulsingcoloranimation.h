@@ -55,8 +55,8 @@ private:
     bool done = false;
 
     QString m_signalName = "sinus";
-    void (PulsingColorAnimation::*pulse_signal)(double time) = &PulsingColorAnimation::sinus_signal;
-    void sinus_signal(double time);
+    void (PulsingColorAnimation::*pulseSignal)(double time) = &PulsingColorAnimation::sinusSignal;
+    void sinusSignal(double time);
 };
 
 

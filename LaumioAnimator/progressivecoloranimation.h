@@ -49,8 +49,8 @@ private:
     bool done = false;
 
     QString m_signalName = "sinus";
-    void (ProgressiveColorAnimation::*slope_signal)(double time) = &ProgressiveColorAnimation::linear_signal;
-    void linear_signal(double time);
+    void (ProgressiveColorAnimation::*slopeSignal)(double time) = &ProgressiveColorAnimation::linearSignal;
+    void linearSignal(double time);
 };
 
 
