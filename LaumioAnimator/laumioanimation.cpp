@@ -9,11 +9,13 @@
 #include "constantcoloranimation.h"
 #include "pulsingcoloranimation.h"
 #include "progressivecoloranimation.h"
+#include "boundedpulsingcoloranimation.h"
 
 std::map <QString, std::unique_ptr <Animation> (*)()> LaumioAnimation::sFactories {
     {"ConstantColor", &ConstantColorAnimation::factory},
     {"PulsingColor", &PulsingColorAnimation::factory},
     {"ProgressiveColor", &ProgressiveColorAnimation::factory},
+    {"BoundedPulsingColor", &BoundedPulsingColorAnimation::factory},
 };
 
 LaumioAnimation::LaumioAnimation(QObject * parent) : QAbstractListModel(parent) {
