@@ -14,7 +14,7 @@ bool ConstantColorAnimation::animationStart(Laumio &laumio) {
 }
 
 void ConstantColorAnimation::animationStop(Laumio &laumio) {
-    laumio.send_color(Qt::black);
+    laumio.send_color(color());
 }
 
 void ConstantColorAnimation::loadFromJSON(const QJsonObject & obj) {

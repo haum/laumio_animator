@@ -21,7 +21,8 @@ bool PulsingColorAnimation::animationUpdate(Laumio &laumio, double time) {
 }
 
 void PulsingColorAnimation::animationStop(Laumio &laumio) {
-    laumio.send_color(Qt::black);
+    (this->*pulse_signal)(duration());
+    laumio.send_color(color());
 }
 
 void PulsingColorAnimation::loadFromJSON(const QJsonObject & obj) {

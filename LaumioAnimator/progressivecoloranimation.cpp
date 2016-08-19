@@ -21,7 +21,8 @@ bool ProgressiveColorAnimation::animationUpdate(Laumio &laumio, double time) {
 }
 
 void ProgressiveColorAnimation::animationStop(Laumio &laumio) {
-    laumio.send_color(Qt::black);
+    (this->*slope_signal)(duration());
+    laumio.send_color(color());
 }
 
 void ProgressiveColorAnimation::loadFromJSON(const QJsonObject & obj) {
