@@ -12,6 +12,29 @@
 #include "animation.h"
 #include "laumio.h"
 
+/*
+
+JSON format :
+
+{
+    "animations" : [
+        {
+            "anims": [
+                {
+                    "type": "<TYPE>",
+                    ...
+                }
+                ...
+            ],
+            "laumio": ...
+        }
+        ...
+    ],
+    "audioSource" : "<AUDIO_URL>"
+}
+
+*/
+
 /** Class to manage animations **/
 class LaumioAnimation : public QAbstractListModel {
     Q_OBJECT

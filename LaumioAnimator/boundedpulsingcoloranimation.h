@@ -9,6 +9,26 @@
 #include "macrodegeu.h"
 #include "laumio.h"
 
+/*
+
+JSON format :
+
+{
+    "delay" = <NB>,
+    "duration" = <NB>,
+    "firstLowerColor" = "<COLOR>",
+    "firstUpperColor" = "<COLOR>",
+    "frequency" = <NB>,
+    "fromStart" = <NB>,
+    "lastLowerColor" = "<COLOR>",
+    "lastUpperColor" = "<COLOR>",
+    "lowerSignal" = "<SIGNAL>",
+    "pulseSignal" = "<SIGNAL>",
+    "upperSignal" = "<SIGNAL>"
+}
+
+*/
+
 class BoundedPulsingColorAnimation : public Animation
 {
     Q_OBJECT

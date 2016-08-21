@@ -6,6 +6,20 @@
 #include <QUdpSocket>
 #include "macrodegeu.h"
 
+/*
+
+JSON format :
+
+{
+    "ip" = "<STR>",
+    "name" = "<STR>",
+    "port" = <NB>,
+    "x" = <NB>,
+    "y" = <NB>
+}
+
+*/
+
 /** Object to represent au Laumio with services to communicate with actual hardware **/
 class Laumio : public QObject
 {

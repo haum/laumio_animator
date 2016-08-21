@@ -9,6 +9,20 @@
 #include "macrodegeu.h"
 #include "laumio.h"
 
+/*
+
+JSON format :
+
+{
+    "duration" = <NB>,
+    "firstColor" = "<COLOR>",
+    "fromStart" = <NB>,
+    "lastColor" = "<COLOR>",
+    "slopeSignal" = "<SIGNAL>"
+}
+
+*/
+
 /** Animation which set a laumio to a progressive color **/
 class ProgressiveColorAnimation : public Animation
 {
