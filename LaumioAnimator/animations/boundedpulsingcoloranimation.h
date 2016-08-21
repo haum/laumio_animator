@@ -6,8 +6,6 @@
 #include <memory>
 #include <cmath>
 #include "animation.h"
-#include "macrodegeu.h"
-#include "laumio.h"
 
 /*
 

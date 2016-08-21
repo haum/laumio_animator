@@ -5,8 +5,6 @@
 #include <QColor>
 #include <memory>
 #include "animation.h"
-#include "macrodegeu.h"
-#include "laumio.h"
 
 /*
 

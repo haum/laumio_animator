@@ -9,7 +9,7 @@
 #include <map>
 #include <chrono>
 #include "macrodegeu.h"
-#include "animation.h"
+#include "animations/animation.h"
 #include "laumio.h"
 
 /*

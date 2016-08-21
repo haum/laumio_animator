@@ -2,8 +2,8 @@
 #define ANIMATION_H
 
 #include <QObject>
-#include "macrodegeu.h"
-#include "laumio.h"
+#include "../macrodegeu.h"
+#include "../laumio.h"
 
 /** Base class for animations **/
 class Animation : public QObject
