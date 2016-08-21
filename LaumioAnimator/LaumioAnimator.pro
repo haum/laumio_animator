@@ -12,7 +12,7 @@ SOURCES += main.cpp \
     progressivecoloranimation.cpp \
     boundedpulsingcoloranimation.cpp
 
-RESOURCES += qml.qrc
+RESOURCES += qml/qml.qrc
 
 include(deployment.pri)
 
