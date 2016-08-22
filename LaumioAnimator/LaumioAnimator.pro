@@ -6,6 +6,10 @@ CONFIG += c++11
 SOURCES += main.cpp \
     laumio.cpp \
     laumioanimation.cpp \
+    signals/signal.cpp \
+    signals/nullsignal.cpp \
+    signals/sumsignal.cpp \
+    signals/slopesignal.cpp \
     animations/animation.cpp \
     animations/constantcoloranimation.cpp \
     animations/pulsingcoloranimation.cpp \
@@ -20,6 +24,10 @@ HEADERS += \
     laumio.h \
     laumioanimation.h \
     macrodegeu.h \
+    signals/signal.h \
+    signals/nullsignal.h \
+    signals/sumsignal.h \
+    signals/slopesignal.h \
     animations/animation.h \
     animations/constantcoloranimation.h \
     animations/pulsingcoloranimation.h \
