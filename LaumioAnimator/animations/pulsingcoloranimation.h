@@ -6,8 +6,22 @@
 #include <memory>
 #include <cmath>
 #include "animation.h"
-#include "macrodegeu.h"
-#include "laumio.h"
+
+/*
+
+JSON format :
+
+{
+    "delay" = <NB>,
+    "duration" = <NB>,
+    "frequency" = <NB>,
+    "fromStart" = <NB>,
+    "lowerColor" = "<COLOR>",
+    "pulseSignal" = "<SIGNAL>",
+    "upperColor" = "<COLOR>"
+}
+
+*/
 
 /** Animation which set a laumio to a pulsing color **/
 class PulsingColorAnimation : public Animation

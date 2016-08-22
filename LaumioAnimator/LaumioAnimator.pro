@@ -6,22 +6,22 @@ CONFIG += c++11
 SOURCES += main.cpp \
     laumio.cpp \
     laumioanimation.cpp \
-    animation.cpp \
-    constantcoloranimation.cpp \
-    pulsingcoloranimation.cpp \
-    progressivecoloranimation.cpp \
-    boundedpulsingcoloranimation.cpp
+    animations/animation.cpp \
+    animations/constantcoloranimation.cpp \
+    animations/pulsingcoloranimation.cpp \
+    animations/progressivecoloranimation.cpp \
+    animations/boundedpulsingcoloranimation.cpp
 
-RESOURCES += qml.qrc
+RESOURCES += qml/qml.qrc
 
 include(deployment.pri)
 
 HEADERS += \
     laumio.h \
     laumioanimation.h \
-    animation.h \
-    constantcoloranimation.h \
-    pulsingcoloranimation.h \
-    progressivecoloranimation.h \
     macrodegeu.h \
-    boundedpulsingcoloranimation.h
+    animations/animation.h \
+    animations/constantcoloranimation.h \
+    animations/pulsingcoloranimation.h \
+    animations/progressivecoloranimation.h \
+    animations/boundedpulsingcoloranimation.h

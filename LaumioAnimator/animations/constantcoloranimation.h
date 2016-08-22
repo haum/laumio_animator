@@ -5,8 +5,18 @@
 #include <QColor>
 #include <memory>
 #include "animation.h"
-#include "macrodegeu.h"
-#include "laumio.h"
+
+/*
+
+JSON format :
+
+{
+    "color" = "<COLOR>",
+    "duration" = <NB>,
+    "fromStart" = <NB>
+}
+
+*/
 
 /** Animation which set a laumio to a constant color **/
 class ConstantColorAnimation : public Animation

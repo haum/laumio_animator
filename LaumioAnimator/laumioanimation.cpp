@@ -6,10 +6,10 @@
 #include <QJsonObject>
 #include <QQmlEngine>
 
-#include "constantcoloranimation.h"
-#include "pulsingcoloranimation.h"
-#include "progressivecoloranimation.h"
-#include "boundedpulsingcoloranimation.h"
+#include "animations/constantcoloranimation.h"
+#include "animations/pulsingcoloranimation.h"
+#include "animations/progressivecoloranimation.h"
+#include "animations/boundedpulsingcoloranimation.h"
 
 std::map <QString, std::unique_ptr <Animation> (*)()> LaumioAnimation::sFactories {
     {"ConstantColor", &ConstantColorAnimation::factory},
