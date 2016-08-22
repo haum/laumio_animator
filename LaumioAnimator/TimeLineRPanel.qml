@@ -3,6 +3,7 @@ import QtQuick 2.0
 RPanel {
     Flickable {
         anchors.fill: parent
+        contentWidth: 60000
         Column {
             id: nameColumn
             property var selected: undefined
@@ -16,7 +17,7 @@ RPanel {
                 delegate: AnimationLane {
                     laumio: index
                     property var laneModel: model
-                    width: parent.width - 10
+                    width: 60000 - 10
                     height: 50
                     Repeater {
                         id: animationRepeater
