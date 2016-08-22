@@ -16,5 +16,6 @@
         <file>animations/LAAnimationPopup.qml</file>
 	<file>animations/LAProgressiveColor.qml</file>
 	<file>animations/LAPulsingColor.qml</file>
+	<file>animations/LABoundedPulsingColor.qml</file>
     </qresource>
 </RCC>
