@@ -26,6 +26,9 @@ class ProgressiveColorAnimation : public Animation
 {
     Q_OBJECT
 
+    /** Property storing rectangle color in timeline **/
+    PROP(QColor, rectangleColor, "#008888")
+
     /** Property storing color to set **/
     PROP(QColor, color, "black")
 

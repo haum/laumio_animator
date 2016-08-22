@@ -31,6 +31,9 @@ class BoundedPulsingColorAnimation : public Animation
 {
     Q_OBJECT
 
+    /** Property storing rectangle color in timeline **/
+    PROP(QColor, rectangleColor, "#008800")
+
     /** Property storing color to set **/
     PROP(QColor, color, "black")
 

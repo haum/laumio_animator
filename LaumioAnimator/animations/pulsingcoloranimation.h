@@ -1,4 +1,4 @@
-#ifndef PULSINGCOLORANIMATION_H
+1#ifndef PULSINGCOLORANIMATION_H
 #define PULSINGCOLORANIMATION_H
 
 #include <QObject>
@@ -27,6 +27,9 @@ JSON format :
 class PulsingColorAnimation : public Animation
 {
     Q_OBJECT
+
+    /** Property storing rectangle color in timeline **/
+    PROP(QColor, rectangleColor, "#8800FF")
 
     /** Property storing color to set **/
     PROP(QColor, color, "black")

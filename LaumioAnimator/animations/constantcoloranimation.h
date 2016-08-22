@@ -23,6 +23,9 @@ class ConstantColorAnimation : public Animation
 {
     Q_OBJECT
 
+    /** Property storing rectangle color in timeline **/
+    PROP(QColor, rectangleColor, "#ff0000")
+
     /** Property storing color to set **/
     PROP(QColor, color, "black")
 

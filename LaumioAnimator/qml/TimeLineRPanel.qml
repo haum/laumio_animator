@@ -55,7 +55,7 @@ RPanel {
                             height: parent.height
                             border.width: 1
                             border.color: "#e0e0e0"
-                            color: "#ff0000"
+                            color: modelData.rectangleColor
                             opacity: 0.8
                             visible: true
                             Text{
