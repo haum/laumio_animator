@@ -14,7 +14,8 @@ SOURCES += main.cpp \
     animations/constantcoloranimation.cpp \
     animations/pulsingcoloranimation.cpp \
     animations/progressivecoloranimation.cpp \
-    animations/boundedpulsingcoloranimation.cpp
+    animations/boundedpulsingcoloranimation.cpp \
+    animations/mix2colorsanimation.cpp
 
 RESOURCES += qml/qml.qrc
 
@@ -32,4 +33,5 @@ HEADERS += \
     animations/constantcoloranimation.h \
     animations/pulsingcoloranimation.h \
     animations/progressivecoloranimation.h \
-    animations/boundedpulsingcoloranimation.h
+    animations/boundedpulsingcoloranimation.h \
+    animations/mix2colorsanimation.h
