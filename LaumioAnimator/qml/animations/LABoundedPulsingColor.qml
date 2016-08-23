@@ -147,15 +147,18 @@ Dialog {
             anchors.bottomMargin: 20
             height: 40
             onClicked: {
-                animation.firstLowerColor = animFirstLowerColor.text
-                animation.lastLowerColor = animLastLowerColor.text
-                animation.firstUpperColor = animFirstUpperColor.text
-                animation.lastUpperColor = animLastUpperColor.text
-                animation.fromStart = parseFloat(beginning.text)
-                animation.duration = parseFloat(duration.text)
-                animation.pulsation = parseFloat(frequency.text) * 2 * Math.PI
-                animation.delay = parseFloat(delay.text)
-                boundedPulsingColorPopup.close()
+                if (parseFloat(duration.text) !== 0)
+                {
+                    animation.firstLowerColor = animFirstLowerColor.text
+                    animation.lastLowerColor = animLastLowerColor.text
+                    animation.firstUpperColor = animFirstUpperColor.text
+                    animation.lastUpperColor = animLastUpperColor.text
+                    animation.fromStart = parseFloat(beginning.text)
+                    animation.duration = parseFloat(duration.text)
+                    animation.pulsation = parseFloat(frequency.text) * 2 * Math.PI
+                    animation.delay = parseFloat(delay.text)
+                    boundedPulsingColorPopup.close()
+                }
             }
         }
     }
