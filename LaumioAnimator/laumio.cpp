@@ -43,7 +43,7 @@ void Laumio::send_color(QColor color) {
     sock.writeDatagram(data, sizeof(data), QHostAddress(m_ip), m_port);
 }
 
-void Laumio::animRaindow() {
+void Laumio::animRainbow() {
     char data[1];
     data[0] = 10;
     sock.writeDatagram(data, sizeof(data), QHostAddress(m_ip), m_port);

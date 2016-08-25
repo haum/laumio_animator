@@ -78,7 +78,7 @@ public slots:
     void send_color(QColor color);
 
     /** Send special animation "rainbow" encoded in laumio **/
-    void animRaindow();
+    void animRainbow();
 
     /** Send special animation "colorWipe" encoded in laumio
       * @param color    Base color for the animation
