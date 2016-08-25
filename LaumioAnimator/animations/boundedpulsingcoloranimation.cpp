@@ -36,7 +36,7 @@ void BoundedPulsingColorAnimation::loadFromJSON(const QJsonObject & obj) {
     if (obj.contains("pulseSignal")) set_pulseSignal(obj["pulseSignal"].toString());
     if (obj.contains("upperSignal")) set_upperBoundSignal(obj["upperSignal"].toString());
     if (obj.contains("lowerSignal")) set_lowerBoundSignal(obj["lowerSignal"].toString());
-    if (obj.contains("frequency")) set_pulsation(obj["frequency"].toDouble() * M_PI);
+    if (obj.contains("frequency")) set_pulsation(obj["frequency"].toDouble() * 2 * M_PI);
     if (obj.contains("delay")) set_delay(obj["delay"].toDouble());
     qDebug() << fromStart() << duration() << firstLowerColor().name() << lastLowerColor().name() << firstUpperColor().name()  << lastUpperColor().name() << upperBoundSignalName() << lowerBoundSignalName() << pulseSignalName() << pulsation() << delay();
 
