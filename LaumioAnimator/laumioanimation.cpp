@@ -218,7 +218,7 @@ void LaumioAnimation::stop() {
 
 void LaumioAnimation::playContinue() {
     double now = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now() - m_play_start).count() / 1000.0;
-
+    std::list <PlayAnim> m_play_reallyPlaying;
     // Start animations that need to
     auto itBegin = std::begin(m_play_toBePlayed);
     auto itEnd = std::end(m_play_toBePlayed);
@@ -235,18 +235,34 @@ void LaumioAnimation::playContinue() {
         m_play_toBePlayed.erase(itBegin, it);
 
     // Update animations
+    auto itReally = std::begin(m_play_reallyPlaying);
     itBegin = std::begin(m_play_playing);
     itEnd = std::end(m_play_playing);
     it = itBegin;
     while (it != itEnd) {
-        bool update = it->anim->animationUpdate(*(it->laumio), now - it->anim->fromStart());
-        if (!update || it->anim->fromStart() + it->anim->duration() <= now) {
+        if (it->anim->fromStart() + it->anim->duration() <= now) {
             m_play_toBeDeleted.push_back(*it);
             auto itRm = it;
             ++it;
             m_play_playing.erase(itRm);
         } else {
             ++it;
+            m_play_reallyPlaying.clear();
+            while (itReally != std::end(m_play_reallyPlaying)) {
+                if(it->laumio == itReally->laumio && it->anim->priority() > itReally->anim->priority()){
+                    m_play_reallyPlaying.erase(itReally);
+                    m_play_reallyPlaying.push_back(*it);
+                }
+                ++itReally;
+            }
+        }
+    }
+    itReally = std::begin(m_play_reallyPlaying);
+    while (itReally != std::end(m_play_reallyPlaying)){
+        bool update = itReally->anim->animationUpdate(*(itReally->laumio), now - itReally->anim->fromStart());
+        if (!update){
+            m_play_toBeDeleted.push_back(*itReally);
+            m_play_reallyPlaying.erase(itReally);
         }
     }
 

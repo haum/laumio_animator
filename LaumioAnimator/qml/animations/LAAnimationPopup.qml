@@ -13,7 +13,7 @@ Dialog {
     contentItem: Rectangle {
         color: "#3b3b3b"
         implicitWidth: 360
-        implicitHeight: 120
+        implicitHeight: 240
         Text {
             text: "Animation type"
             anchors.top: parent.top
@@ -29,6 +29,24 @@ Dialog {
             width: 340
             model: anim.factoriesNames()
         }
+        Text{
+            id: priorityText
+            text: "Priority"
+            anchors.left: animChoice.left
+            anchors.top: animChoice.bottom
+            anchors.topMargin: 10
+            color: "#fff"
+        }
+        TextField{
+            id: animPriority
+            anchors{
+                top: priorityText.bottom
+                topMargin: 10
+                left: animChoice.left
+            }
+            width: 340
+            text:"0"
+        }
         LAButton {
             text: "Create animation"
             anchors.horizontalCenter: parent.horizontalCenter
@@ -37,6 +55,7 @@ Dialog {
             height: 40
             onClicked: {
                 var animation = anim.newAnimation(laumioIndex, animChoice.currentText)
+                //animation.setPriority(animPriority.text)
                 var component = Qt.createComponent(Qt.resolvedUrl("LA" + animChoice.currentText + ".qml"))
                 if (component.status === Component.Ready) {
                     var dialog = component.createObject(parent, {animation: animation})
