@@ -17,7 +17,7 @@ class Animation : public QObject
     PROP(double, duration, 3)
 
     /** Property to store priority of the animation **/
-    PROP(unsigned int, priority, 0)
+    PROP(int, priority, 0)
 
     /** Property to get animation's code name **/
     Q_PROPERTY(QString name READ name CONSTANT)

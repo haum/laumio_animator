@@ -33,6 +33,7 @@ void ProgressiveColorAnimation::loadFromJSON(const QJsonObject & obj) {
         set_lastColor(QColor(obj["lastColor"].toString()));
     }
     if (obj.contains("slopeSignal")) set_slopeSignal(obj["slopeSignal"].toString());
+    if (obj.contains("priority")) set_priority(obj["priority"].toInt());
 }
 
 void ProgressiveColorAnimation::saveToJSON(QJsonObject & obj) {
@@ -41,6 +42,7 @@ void ProgressiveColorAnimation::saveToJSON(QJsonObject & obj) {
     obj["firstColor"] = firstColor().name();
     obj["lastColor"] = lastColor().name();
     obj["slopeSignal"] = slopeSignalName();
+    obj["priority"] = priority();
 }
 
 

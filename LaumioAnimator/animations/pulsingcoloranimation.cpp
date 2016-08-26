@@ -37,6 +37,7 @@ void PulsingColorAnimation::loadFromJSON(const QJsonObject & obj) {
     if (obj.contains("frequency")) set_pulsation(obj["frequency"].toDouble() * 2 * M_PI);
     if (obj.contains("delay")) set_delay(obj["delay"].toDouble());
     if (obj.contains("pulseSignal")) set_pulseSignal(obj["pulseSignal"].toString());
+    if (obj.contains("priority")) set_priority(obj["priority"].toInt());
 }
 
 void PulsingColorAnimation::saveToJSON(QJsonObject & obj) {
@@ -49,6 +50,7 @@ void PulsingColorAnimation::saveToJSON(QJsonObject & obj) {
     obj["frequency"] = pulsation() / (2 * M_PI);
     obj["delay"] = delay();
     obj["pulseSignal"] = pulseSignalName();
+    obj["priority"] = priority();
 }
 
 

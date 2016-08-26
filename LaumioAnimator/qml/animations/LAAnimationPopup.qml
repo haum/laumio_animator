@@ -55,7 +55,7 @@ Dialog {
             height: 40
             onClicked: {
                 var animation = anim.newAnimation(laumioIndex, animChoice.currentText)
-                //animation.setPriority(animPriority.text)
+                animation.priority = parseInt(animPriority.text)
                 var component = Qt.createComponent(Qt.resolvedUrl("LA" + animChoice.currentText + ".qml"))
                 if (component.status === Component.Ready) {
                     var dialog = component.createObject(parent, {animation: animation})

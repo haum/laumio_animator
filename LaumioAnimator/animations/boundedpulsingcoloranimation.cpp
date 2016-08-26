@@ -25,7 +25,7 @@ void BoundedPulsingColorAnimation::animationStop(Laumio &laumio) {
     laumio.send_color(color());
 }
 
-#include <QDebug>
+//#include <QDebug>
 void BoundedPulsingColorAnimation::loadFromJSON(const QJsonObject & obj) {
     if (obj.contains("fromStart")) set_fromStart(obj["fromStart"].toDouble());
     if (obj.contains("duration")) set_duration(obj["duration"].toDouble());
@@ -38,7 +38,8 @@ void BoundedPulsingColorAnimation::loadFromJSON(const QJsonObject & obj) {
     if (obj.contains("lowerSignal")) set_lowerBoundSignal(obj["lowerSignal"].toString());
     if (obj.contains("frequency")) set_pulsation(obj["frequency"].toDouble() * 2 * M_PI);
     if (obj.contains("delay")) set_delay(obj["delay"].toDouble());
-    qDebug() << fromStart() << duration() << firstLowerColor().name() << lastLowerColor().name() << firstUpperColor().name()  << lastUpperColor().name() << upperBoundSignalName() << lowerBoundSignalName() << pulseSignalName() << pulsation() << delay();
+    if (obj.contains("priority")) set_priority(obj["priority"].toInt());
+    //qDebug() << fromStart() << duration() << firstLowerColor().name() << lastLowerColor().name() << firstUpperColor().name()  << lastUpperColor().name() << upperBoundSignalName() << lowerBoundSignalName() << pulseSignalName() << pulsation() << delay();
 
 }
 
@@ -54,6 +55,7 @@ void BoundedPulsingColorAnimation::saveToJSON(QJsonObject & obj) {
     obj["lowerSignal"] = lowerBoundSignalName();
     obj["frequency"] = pulsation() / (2 * M_PI);
     obj["delay"] = delay();
+    obj["priority"] = priority();
 }
 
 

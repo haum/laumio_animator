@@ -41,6 +41,7 @@ void Mix2ColorsAnimation::loadFromJSON(const QJsonObject & obj) {
     if (obj.contains("color1")) set_color1(QColor(obj["color1"].toString()));
     if (obj.contains("color2")) set_color2(QColor(obj["color2"].toString()));
     if (obj.contains("mixSignal")) m_mixSignal = std::move(Signal::makeFromJSON(obj["mixSignal"].toObject()));
+    if (obj.contains("priority")) set_priority(obj["priority"].toInt());
 }
 
 void Mix2ColorsAnimation::saveToJSON(QJsonObject & obj) {
@@ -51,4 +52,5 @@ void Mix2ColorsAnimation::saveToJSON(QJsonObject & obj) {
     QJsonObject sigobj;
     m_mixSignal->saveToJSON(sigobj);
     obj["mixSignal"] = sigobj;
+    obj["priority"] = priority();
 }
