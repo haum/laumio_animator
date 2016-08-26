@@ -2,6 +2,7 @@ import QtQuick 2.0
 
 RPanel {
     property real timeExpand: 100
+    property real variation: 0
     Flickable {
         anchors.fill: parent
         contentWidth: 600 * timeExpand
@@ -10,7 +11,12 @@ RPanel {
             preventStealing: true
             onWheel: {
                 if (wheel.modifiers & Qt.ControlModifier) {
-                    timeExpand += wheel.angleDelta.y / 60
+                    variation = - wheel.angleDelta.y / 60;
+                    if (variation >= timeExpand)
+                    {
+                        variation /= 10;
+                    }
+                    timeExpand -= variation;
                 }
             }
         }
@@ -74,7 +80,12 @@ RPanel {
                             }
                         }
                     }
-
+                    Rectangle {
+                        color: "#ff0000"
+                        height: parent.height
+                        width: 3
+                        x: audio.position * timeExpand / 1000
+                    }
                 }
             }
         }
