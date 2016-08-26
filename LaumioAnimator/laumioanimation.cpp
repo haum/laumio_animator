@@ -184,7 +184,8 @@ void LaumioAnimation::saveToFile(QString filename) {
 }
 
 void LaumioAnimation::play(int timeInMilliseconds = 0) {
-    std::chrono::system_clock::duration delay(timeInMilliseconds * 1000) ;
+    std::chrono::milliseconds delay(timeInMilliseconds);
+    //std::chrono::system_clock::duration delay(timeInMilliseconds * 1000) ;
     set_playing(true);
     m_play_playing.clear();
     m_play_toBePlayed.clear();
