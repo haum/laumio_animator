@@ -96,6 +96,11 @@ Item {
             height: parent.height
             width: parent.width * audio.position / audio.duration
         }
+        Text {
+            color: "cyan"
+            anchors.right: parent.right
+            text: audio.position
+        }
     }
     Rectangle {
         id: bgLeft
