@@ -193,14 +193,15 @@ int LaumioAnimation::priorityTest(PlayAnim p1, PlayAnim p2){
     return ret;
 }
 
-void LaumioAnimation::play() {
+void LaumioAnimation::play(int ms) {
+    std::chrono::milliseconds delay(ms);
     set_playing(true);
     m_play_playing.clear();
     m_play_toBePlayed.clear();
     m_play_toBeDeleted.clear();
-    if(!paused)
-        m_play_start = std::chrono::system_clock::now();
-    else{
+    if(ms >= 0) {
+        m_play_start = std::chrono::system_clock::now() - delay;
+    } else {
         m_play_start += std::chrono::system_clock::now() - m_pause_start;
         paused = false;
     }

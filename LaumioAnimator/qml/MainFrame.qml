@@ -1,5 +1,6 @@
 import QtQuick 2.0
 import QtQuick.Dialogs 1.0
+import QtQuick.Controls 1.2
 import QtMultimedia 5.0
 import Laumio 1.0
 import "widgets"
@@ -73,20 +74,34 @@ Item {
                 text: playing ? "STOP" : "PLAY"
                 onClicked: {
                     if (playing) {
+                        timeValue.text = 0;
                         audio.stop();
                         anim.stop();
                     } else {
+                        audio.seek(parseInt(timeValue.text));
                         audio.play();
-                        anim.play();
+                        anim.play(parseInt(timeValue.text));
                     }
                 }
             }
             LAButton {
                 text: "PAUSE"
                 onClicked: {
-                    anim.pause();
-                    audio.pause();
+                    if (text == "PAUSE") {
+                        timeValue.text = audio.position;
+                        anim.pause();
+                        audio.pause();
+                        text = "REPLAY"
+                    } else {
+                        audio.play();
+                        anim.play(-1);
+                        text = "PAUSE"
+                    }
                 }
+            }
+            TextField {
+                id: timeValue
+                text: "0"
             }
         }
     }
