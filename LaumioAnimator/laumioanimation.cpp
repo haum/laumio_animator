@@ -183,12 +183,13 @@ void LaumioAnimation::saveToFile(QString filename) {
     f.write(doc.toJson());
 }
 
-void LaumioAnimation::play() {
+void LaumioAnimation::play(int timeInMilliseconds = 0) {
+    std::chrono::system_clock::duration delay(timeInMilliseconds * 1000) ;
     set_playing(true);
     m_play_playing.clear();
     m_play_toBePlayed.clear();
     m_play_toBeDeleted.clear();
-    m_play_start = std::chrono::system_clock::now();
+    m_play_start = std::chrono::system_clock::now() - delay;
 
     // Create a list of animations to be played sorted by start time
     for (auto & laumioinfo : m_laumios) {

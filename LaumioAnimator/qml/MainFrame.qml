@@ -1,5 +1,6 @@
 import QtQuick 2.0
 import QtQuick.Dialogs 1.0
+import QtQuick.Controls 1.2
 import QtMultimedia 5.0
 import Laumio 1.0
 import "widgets"
@@ -73,13 +74,19 @@ Item {
                 text: playing ? "STOP" : "PLAY"
                 onClicked: {
                     if (playing) {
+                        timeValue.text = audio.position;
                         audio.stop();
                         anim.stop();
                     } else {
+                        audio.seek(parseInt(timeValue.text));
                         audio.play();
-                        anim.play();
+                        anim.play(parseInt(timeValue.text));
                     }
                 }
+            }
+            TextField {
+                id: timeValue
+                text: "0"
             }
         }
     }
@@ -97,9 +104,9 @@ Item {
             width: parent.width * audio.position / audio.duration
         }
         Text {
-            color: "cyan"
-            anchors.right: parent.right
             text: audio.position
+            anchors.right: parent.right
+            color: "#ffff00"
         }
     }
     Rectangle {

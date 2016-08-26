@@ -96,7 +96,7 @@ public slots:
     void saveToFile(QString filename);
 
     /** Play animation **/
-    void play();
+    void play(int timeInMilliseconds);
 
     /** Stop animation **/
     void stop();
