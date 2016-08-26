@@ -42,6 +42,7 @@ public:
     explicit ConstantColorAnimation(QObject * parent = nullptr);
 
     virtual bool animationStart(Laumio & laumio) override;
+    virtual bool animationUpdate(Laumio & laumio, double time) override;
     virtual void animationStop(Laumio & laumio) override;
 
     virtual void loadFromJSON(const QJsonObject & obj) override;

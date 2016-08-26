@@ -10,7 +10,12 @@ ConstantColorAnimation::ConstantColorAnimation(QObject * parent) : Animation("Co
 
 bool ConstantColorAnimation::animationStart(Laumio &laumio) {
     laumio.send_color(color());
-    return false;
+    return true;
+}
+
+bool ConstantColorAnimation::animationUpdate(Laumio &laumio, double time) {
+    laumio.send_color(color());
+    return true;
 }
 
 void ConstantColorAnimation::animationStop(Laumio &laumio) {
