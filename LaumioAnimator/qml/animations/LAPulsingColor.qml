@@ -9,121 +9,93 @@ Dialog {
     visible: true
     title: "Pulsing Color Animation"
     modality: Qt.WindowModal
+    width: col.width
+    height: col.height
 
     contentItem: Rectangle {
         color: "#3b3b3b"
-        implicitWidth: 360
-        implicitHeight: 220
-        Text{
-            text: "Mean Color"
-            anchors.top: parent.top
-            anchors.left: animMeanColor.left
-            anchors.topMargin: 5
-            color: "#fff"
-        }
-        TextField{
-            id: animMeanColor
-            anchors.left: parent.left
-            anchors.top: parent.top
-            anchors.leftMargin: 20
-            anchors.topMargin: 20
-            text: animation.meanColor
-            width: 150
-        }
-        Text{
-            text: "Color Variation"
-            anchors.top: parent.top
-            anchors.left: animVarColor.left
-            anchors.topMargin: 5
-            color: "#fff"
-        }
-        TextField{
-            id: animVarColor
-            anchors.left: animMeanColor.right
-            anchors.top: parent.top
-            anchors.leftMargin: 20
-            anchors.topMargin: 20
-            text: animation.varColor
-            width: 150
-        }
+        implicitWidth: col.width
+        implicitHeight: col.height
 
-        Text{
-            text: "Beginning"
-            anchors.top: animMeanColor.bottom
-            anchors.left: animMeanColor.left
-            anchors.topMargin: 5
-            color: "#fff"
-        }
-        TextField{
-            id: beginning
-            anchors.top: animMeanColor.bottom
-            anchors.left: animMeanColor.left
-            anchors.topMargin: 20
-            text: animation.fromStart
-            width: 150
-        }
-        Text{
-            text: "Duration"
-            anchors.top: animVarColor.bottom
-            anchors.left: duration.left
-            anchors.topMargin: 5
-            color: "#fff"
-        }
-        TextField{
-            id: duration
-            anchors.top: animVarColor.bottom
-            anchors.left: animVarColor.left
-            anchors.topMargin: 20
-            text: animation.duration
-            width: 150
-        }
-
-        Text{
-            text: "Frequency"
-            anchors.top: beginning.bottom
-            anchors.left: frequency.left
-            anchors.topMargin: 5            
-            color: "#fff"
-        }
-        TextField{
-            id: frequency
-            anchors.top: beginning.bottom
-            anchors.left: animMeanColor.left
-            anchors.topMargin: 20
-            text: animation.pulsation / (2 * Math.PI)
-            width: 150
-        }
-        Text{
-            text: "Delay"
-            anchors.top: duration.bottom
-            anchors.left: delay.left
-            anchors.topMargin: 5
-            color: "#fff"
-        }
-        TextField{
-            id: delay
-            anchors.top: duration.bottom
-            anchors.left: duration.left
-            anchors.topMargin: 20
-            text: animation.delay
-            width: 150
-        }
-
-        LAButton {
-            text: "Save pulsing color animation"
-            anchors.horizontalCenter: parent.horizontalCenter
-            anchors.bottom: parent.bottom
-            anchors.bottomMargin: 20
-            height: 40
-            onClicked: {
-                animation.meanColor = animMeanColor.text
-                animation.varColor = animVarColor.text
-                animation.fromStart = parseFloat(beginning.text)
-                animation.duration = parseFloat(duration.text)
-                animation.pulsation = parseFloat(frequency.text) * 2 * Math.PI
-                animation.delay = parseFloat(delay.text)
-                pulsingColorPopup.close()
+        Column {
+            id: col
+            Text{
+                text: "Mean Color"
+                color: "#fff"
             }
+            TextField{
+                id: animMeanColor
+                text: animation.meanColor
+                width: parent.width
+            }
+            Text{
+                text: "Color Variation"
+                color: "#fff"
+            }
+            TextField{
+                id: animVarColor
+                text: animation.varColor
+                width: parent.width
+            }
+            Text{
+                text: "Beginning"
+                color: "#fff"
+            }
+            TextField{
+                id: beginning
+                text: animation.fromStart
+                width: parent.width
+            }
+            Text{
+                text: "Duration"
+                color: "#fff"
+            }
+            TextField{
+                id: duration
+                text: animation.duration
+                width: parent.width
+            }
+            Text{
+                text: "Frequency"
+                color: "#fff"
+            }
+            TextField{
+                id: frequency
+                text: animation.pulsation / (2 * Math.PI)
+                width: parent.width
+            }
+            Text{
+                text: "Delay"
+                color: "#fff"
+            }
+            TextField{
+                id: delay
+                text: animation.delay
+                width: parent.width
+            }
+            Text{
+                text: "Priority"
+                color: "#fff"
+            }
+            TextField{
+                id: priority
+                text: animation.priority.toString()
+                width: parent.width
+            }
+            LAButton {
+                text: "Save pulsing color animation"
+                onClicked: {
+                    animation.meanColor = animMeanColor.text
+                    animation.varColor = animVarColor.text
+                    animation.fromStart = parseFloat(beginning.text)
+                    animation.duration = parseFloat(duration.text)
+                    animation.pulsation = parseFloat(frequency.text) * 2 * Math.PI
+                    animation.delay = parseFloat(delay.text)
+                    animation.priority = parseInt(priority.text)
+                    pulsingColorPopup.close()
+                }
+            }
+
         }
     }
 

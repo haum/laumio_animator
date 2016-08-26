@@ -9,89 +9,72 @@ Dialog {
     visible: true
     title: "Progressive Color Animation"
     modality: Qt.WindowModal
+    width: col.width
+    height: col.height
 
     contentItem: Rectangle {
         color: "#3b3b3b"
-        implicitWidth: 360
-        implicitHeight: 180
-        Text{
-            text: "First Color"
-            anchors.top: parent.top
-            anchors.left: animFirstColor.left
-            anchors.topMargin: 5
-            color: "#fff"
-        }
-        TextField{
-            id: animFirstColor
-            anchors.left: parent.left
-            anchors.top: parent.top
-            anchors.leftMargin: 20
-            anchors.topMargin: 20
-            text: animation.firstColor
-            width: 150
-        }
-        Text{
-            text: "Last Color"
-            anchors.top: parent.top
-            anchors.left: animLastColor.left
-            anchors.topMargin: 5
-            color: "#fff"
-        }
-        TextField{
-            id: animLastColor
-            anchors.left: animFirstColor.right
-            anchors.top: parent.top
-            anchors.leftMargin: 20
-            anchors.topMargin: 20
-            text: animation.lastColor
-            width: 150
-        }
+        implicitWidth: col.width
+        implicitHeight: col.height
+        Column {
+            id: col
+            Text{
+                text: "First Color"
+                color: "#fff"
+            }
+            TextField{
+                id: animFirstColor
+                text: animation.firstColor
+                width: parent.width
+            }
+            Text{
+                text: "Last Color"
+                color: "#fff"
+            }
+            TextField{
+                id: animLastColor
+                text: animation.lastColor
+                width: parent.width
+            }
 
-        Text{
-            text: "Beginning"
-            anchors.top: animFirstColor.bottom
-            anchors.left: animFirstColor.left
-            anchors.topMargin: 5
-            color: "#fff"
-        }
-        TextField{
-            id: beginning
-            anchors.top: animFirstColor.bottom
-            anchors.left: animFirstColor.left
-            anchors.topMargin: 20
-            text: animation.fromStart
-            width: 150
-        }
-        Text{
-            text: "Duration"
-            anchors.top: animLastColor.bottom
-            anchors.left: duration.left
-            anchors.topMargin: 5
-            color: "#fff"
-        }
-        TextField{
-            id: duration
-            anchors.top: animLastColor.bottom
-            anchors.left: animLastColor.left
-            anchors.topMargin: 20
-            text: animation.duration
-            width: 150
-        }
-        LAButton {
-            text: "Save progressive color animation"
-            anchors.horizontalCenter: parent.horizontalCenter
-            anchors.bottom: parent.bottom
-            anchors.bottomMargin: 20
-            height: 40
-            onClicked: {
-                animation.firstColor = animFirstColor.text
-                animation.lastColor = animLastColor.text
-                animation.fromStart = parseFloat(beginning.text)
-                animation.duration = parseFloat(duration.text)
-                progressiveColorPopup.close()
+            Text{
+                text: "Beginning"
+                color: "#fff"
+            }
+            TextField{
+                id: beginning
+                text: animation.fromStart
+                width: parent.width
+            }
+            Text{
+                text: "Duration"
+                color: "#fff"
+            }
+            TextField{
+                id: duration
+                text: animation.duration
+                width: parent.width
+            }
+            Text{
+                text: "Priority"
+                color: "#fff"
+            }
+            TextField{
+                id: priority
+                text: animation.priority.toString()
+                width: parent.width
+            }
+            LAButton {
+                text: "Save progressive color animation"
+                onClicked: {
+                    animation.firstColor = animFirstColor.text
+                    animation.lastColor = animLastColor.text
+                    animation.fromStart = parseFloat(beginning.text)
+                    animation.duration = parseFloat(duration.text)
+                    animation.priority = parseInt(priority.text)
+                    progressiveColorPopup.close()
+                }
             }
         }
     }
-
-
 }
