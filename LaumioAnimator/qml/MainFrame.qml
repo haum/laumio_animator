@@ -81,6 +81,13 @@ Item {
                     }
                 }
             }
+            LAButton {
+                text: "PAUSE"
+                onClicked: {
+                    anim.pause();
+                    audio.pause();
+                }
+            }
         }
     }
     MouseArea {

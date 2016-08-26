@@ -101,6 +101,9 @@ public slots:
     /** Stop animation **/
     void stop();
 
+    /** Pause animation **/
+    void pause();
+
 private:
     /** Factories **/
     static std::map <QString, std::unique_ptr <Animation> (*)()> sFactories;
@@ -125,6 +128,12 @@ private:
 
     /** Current playing time **/
     std::chrono::system_clock::time_point m_play_start;
+
+    /** Current pausing time **/
+    std::chrono::system_clock::time_point m_pause_start;
+
+    /** Boolean to store pause state */
+    bool paused = false;
 
     struct PlayAnim {
         Animation* anim;

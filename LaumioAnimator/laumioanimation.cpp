@@ -198,7 +198,12 @@ void LaumioAnimation::play() {
     m_play_playing.clear();
     m_play_toBePlayed.clear();
     m_play_toBeDeleted.clear();
-    m_play_start = std::chrono::system_clock::now();
+    if(!paused)
+        m_play_start = std::chrono::system_clock::now();
+    else{
+        m_play_start += std::chrono::system_clock::now() - m_pause_start;
+        paused = false;
+    }
 
     // Create a list of animations to be played sorted by start time
     for (auto & laumioinfo : m_laumios) {
@@ -219,6 +224,13 @@ void LaumioAnimation::play() {
 
     m_play_timer.start();
     playContinue();
+}
+
+void LaumioAnimation::pause(){
+    m_pause_start = std::chrono::system_clock::now();
+    paused = true;
+    m_play_timer.stop();
+    set_playing(false);
 }
 
 void LaumioAnimation::stop() {
