@@ -183,6 +183,16 @@ void LaumioAnimation::saveToFile(QString filename) {
     f.write(doc.toJson());
 }
 
+int LaumioAnimation::priorityTest(PlayAnim p1, PlayAnim p2){
+    int ret = 0;
+    if(p1.laumio == p2.laumio){
+        ret = 1;
+        if(p1.anim->priority() > p2.anim->priority())
+            ret = 2;
+    }
+    return ret;
+}
+
 void LaumioAnimation::play() {
     set_playing(true);
     m_play_playing.clear();
@@ -246,23 +256,41 @@ void LaumioAnimation::playContinue() {
             ++it;
             m_play_playing.erase(itRm);
         } else {
-            ++it;
-            m_play_reallyPlaying.clear();
-            while (itReally != std::end(m_play_reallyPlaying)) {
-                if(it->laumio == itReally->laumio && it->anim->priority() > itReally->anim->priority()){
-                    m_play_reallyPlaying.erase(itReally);
-                    m_play_reallyPlaying.push_back(*it);
-                }
-                ++itReally;
+            if(m_play_reallyPlaying.empty()){
+                m_play_reallyPlaying.push_back(*it);
             }
+            itReally = std::begin(m_play_reallyPlaying);
+            while (itReally != std::end(m_play_reallyPlaying)) {
+                int test = priorityTest(*it, *itReally);
+                switch(test){
+                    case 1: {
+                        ++itReally;
+                        break;
+                    }
+                    case 2: {
+                        auto itRm = itReally;
+                        ++itReally;
+                        m_play_reallyPlaying.erase(itRm);
+                        break;
+                    }
+                    case 0: {
+                        ++itReally;
+                        m_play_reallyPlaying.push_back(*it);
+                        break;
+                    }
+                }
+            }
+            ++it;
         }
     }
     itReally = std::begin(m_play_reallyPlaying);
     while (itReally != std::end(m_play_reallyPlaying)){
         bool update = itReally->anim->animationUpdate(*(itReally->laumio), now - itReally->anim->fromStart());
+        auto itRm = itReally;
+        itReally++;
         if (!update){
-            m_play_toBeDeleted.push_back(*itReally);
-            m_play_reallyPlaying.erase(itReally);
+            m_play_toBeDeleted.push_back(*itRm);
+            m_play_playing.erase(itRm);
         }
     }
 

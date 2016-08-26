@@ -131,6 +131,9 @@ private:
         Laumio * laumio;
     };
 
+    /* Checks if a PlayAnim has higher priority than another */
+    int priorityTest(PlayAnim p1, PlayAnim p2);
+
     /** List of aimations to be played **/
     std::list <PlayAnim> m_play_toBePlayed;
 
