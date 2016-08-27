@@ -10,10 +10,6 @@ Item {
     MouseArea {
         anchors.fill: parent
         onClicked: {
-            var component = Qt.createComponent("animations/LAAnimationPopup.qml")
-            if (component.status === Component.Ready) {
-                var dialog = component.createObject(parent,{laumioIndex: laumio});
-            }
             lane.clicked(mouse)
         }
         Rectangle {
