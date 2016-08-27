@@ -1,7 +1,7 @@
 import QtQuick 2.0
 
 RPanel {
-    property real timeExpand: 100
+    property real timeExpand: 10
     property real variation: 0
     Flickable {
         anchors.fill: parent
