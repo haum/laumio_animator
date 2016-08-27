@@ -45,7 +45,7 @@ Dialog {
                 left: animChoice.left
             }
             width: 340
-            text:"0"
+            text:"10"
         }
         LAButton {
             text: "Create animation"
