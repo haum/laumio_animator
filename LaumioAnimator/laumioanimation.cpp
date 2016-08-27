@@ -94,6 +94,16 @@ Animation* LaumioAnimation::newAnimation(int idx, QString factoryName) {
     return nullptr;
 }
 
+Animation* LaumioAnimation::copyAnimation(int index, Animation * animation) {
+    Animation * newani = newAnimation(index, animation->name());
+    if (newani) {
+        QJsonObject obj;
+        animation->saveToJSON(obj);
+        newani->loadFromJSON(obj);
+    }
+    return newani;
+}
+
 void LaumioAnimation::deleteAnimation(int laumioNb, int idx) {
     if (LaumioAnimation::playing())
         return;
