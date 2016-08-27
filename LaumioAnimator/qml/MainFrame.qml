@@ -141,6 +141,13 @@ Item {
             anchors.right: parent.right
             text: audio.position
         }
+        onClicked: {
+            var v = mouse.x / width * audio.duration
+            timeValue.text = v;
+            audio.seek(v);
+            audio.play();
+            anim.play(v);
+        }
     }
     Rectangle {
         id: bgLeft
