@@ -103,17 +103,16 @@ Item {
                 }
             }
             LAButton {
-                text: "PAUSE"
+                property bool playing: (audio.playbackState == Audio.PlayingState) || anim.playing
+                text: playing ? "PAUSE" : "REPLAY"
                 onClicked: {
                     if (text == "PAUSE") {
                         timeValue.text = audio.position;
                         anim.pause();
                         audio.pause();
-                        text = "REPLAY"
                     } else {
                         audio.play();
                         anim.play(-1);
-                        text = "PAUSE"
                     }
                 }
             }
