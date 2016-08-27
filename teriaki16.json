@@ -9,13 +9,33 @@
                     "firstUpperColor": "#0000ff",
                     "frequency": 0.25,
                     "fromStart": 0,
-                    "lastLowerColor": "#000000",
+                    "lastLowerColor": "#000005",
                     "lastUpperColor": "#000019",
                     "lowerSignal": "linear",
                     "priority": 0,
                     "pulseSignal": "sinus",
                     "type": "BoundedPulsingColor",
                     "upperSignal": "linear"
+                },
+                {
+                    "delay": 0,
+                    "duration": 200,
+                    "frequency": 0.25,
+                    "fromStart": 50,
+                    "lowerColor": "#000005",
+                    "priority": 0,
+                    "pulseSignal": "sinus",
+                    "type": "PulsingColor",
+                    "upperColor": "#000019"
+                },
+                {
+                    "duration": 3.2000000000000002,
+                    "firstColor": "#ffffff",
+                    "fromStart": 41,
+                    "lastColor": "#000042",
+                    "priority": 10,
+                    "slopeSignal": "linear",
+                    "type": "ProgressiveColor"
                 }
             ],
             "laumio": {
@@ -35,13 +55,33 @@
                     "firstUpperColor": "#0000ff",
                     "frequency": 0.25,
                     "fromStart": 0,
-                    "lastLowerColor": "#000000",
+                    "lastLowerColor": "#000005",
                     "lastUpperColor": "#000019",
                     "lowerSignal": "linear",
                     "priority": 0,
                     "pulseSignal": "sinus",
                     "type": "BoundedPulsingColor",
                     "upperSignal": "linear"
+                },
+                {
+                    "delay": 0,
+                    "duration": 200,
+                    "frequency": 0.25,
+                    "fromStart": 50,
+                    "lowerColor": "#000005",
+                    "priority": 0,
+                    "pulseSignal": "sinus",
+                    "type": "PulsingColor",
+                    "upperColor": "#000019"
+                },
+                {
+                    "duration": 3.2000000000000002,
+                    "firstColor": "#ffffff",
+                    "fromStart": 41,
+                    "lastColor": "#000042",
+                    "priority": 10,
+                    "slopeSignal": "linear",
+                    "type": "ProgressiveColor"
                 }
             ],
             "laumio": {
@@ -61,7 +101,7 @@
                     "firstUpperColor": "#0000ff",
                     "frequency": 0.25,
                     "fromStart": 0,
-                    "lastLowerColor": "#000000",
+                    "lastLowerColor": "#000005",
                     "lastUpperColor": "#000019",
                     "lowerSignal": "linear",
                     "priority": 0,
@@ -70,9 +110,20 @@
                     "upperSignal": "linear"
                 },
                 {
+                    "delay": 0,
+                    "duration": 200,
+                    "frequency": 0.25,
+                    "fromStart": 50,
+                    "lowerColor": "#000005",
+                    "priority": 0,
+                    "pulseSignal": "sinus",
+                    "type": "PulsingColor",
+                    "upperColor": "#000019"
+                },
+                {
                     "duration": 3.2000000000000002,
                     "firstColor": "#ffffff",
-                    "fromStart": 36.299999999999997,
+                    "fromStart": 35.5,
                     "lastColor": "#000032",
                     "priority": 10,
                     "slopeSignal": "linear",
@@ -84,7 +135,7 @@
                 "name": "PorteG",
                 "port": 6969,
                 "x": 0.40000000000000002,
-                "y": 0.94999999999999996
+                "y": 0.94999999999999984
             }
         },
         {
@@ -96,7 +147,7 @@
                     "firstUpperColor": "#0000ff",
                     "frequency": 0.25,
                     "fromStart": 0,
-                    "lastLowerColor": "#000000",
+                    "lastLowerColor": "#000005",
                     "lastUpperColor": "#000019",
                     "lowerSignal": "linear",
                     "priority": 0,
@@ -105,9 +156,20 @@
                     "upperSignal": "linear"
                 },
                 {
+                    "delay": 0,
+                    "duration": 200,
+                    "frequency": 0.25,
+                    "fromStart": 50,
+                    "lowerColor": "#000005",
+                    "priority": 0,
+                    "pulseSignal": "sinus",
+                    "type": "PulsingColor",
+                    "upperColor": "#000019"
+                },
+                {
                     "duration": 3.2000000000000002,
                     "firstColor": "#ffffff",
-                    "fromStart": 36.299999999999997,
+                    "fromStart": 35.5,
                     "lastColor": "#000032",
                     "priority": 10,
                     "slopeSignal": "linear",
@@ -119,7 +181,7 @@
                 "name": "PorteD",
                 "port": 6969,
                 "x": 0.59999999999999998,
-                "y": 0.94999999999999996
+                "y": 0.94999999999999984
             }
         },
         {
@@ -131,7 +193,7 @@
                     "firstUpperColor": "#0000ff",
                     "frequency": 0.25,
                     "fromStart": 0,
-                    "lastLowerColor": "#000000",
+                    "lastLowerColor": "#000005",
                     "lastUpperColor": "#000019",
                     "lowerSignal": "linear",
                     "priority": 0,
@@ -140,9 +202,20 @@
                     "upperSignal": "linear"
                 },
                 {
+                    "delay": 0,
+                    "duration": 200,
+                    "frequency": 0.25,
+                    "fromStart": 50,
+                    "lowerColor": "#000005",
+                    "priority": 0,
+                    "pulseSignal": "sinus",
+                    "type": "PulsingColor",
+                    "upperColor": "#000019"
+                },
+                {
                     "duration": 3.2000000000000002,
                     "firstColor": "#ffffff",
-                    "fromStart": 36.299999999999997,
+                    "fromStart": 35.5,
                     "lastColor": "#000032",
                     "priority": 10,
                     "slopeSignal": "linear",
@@ -154,7 +227,7 @@
                 "name": "FondG",
                 "port": 6969,
                 "x": 0.40000000000000002,
-                "y": 0.05000000000000001
+                "y": 0.050000000000000003
             }
         },
         {
@@ -166,7 +239,7 @@
                     "firstUpperColor": "#0000ff",
                     "frequency": 0.25,
                     "fromStart": 0,
-                    "lastLowerColor": "#000000",
+                    "lastLowerColor": "#000005",
                     "lastUpperColor": "#000019",
                     "lowerSignal": "linear",
                     "priority": 0,
@@ -175,9 +248,20 @@
                     "upperSignal": "linear"
                 },
                 {
+                    "delay": 0,
+                    "duration": 200,
+                    "frequency": 0.25,
+                    "fromStart": 50,
+                    "lowerColor": "#000005",
+                    "priority": 0,
+                    "pulseSignal": "sinus",
+                    "type": "PulsingColor",
+                    "upperColor": "#000019"
+                },
+                {
                     "duration": 3.2000000000000002,
                     "firstColor": "#ffffff",
-                    "fromStart": 36.299999999999997,
+                    "fromStart": 35.5,
                     "lastColor": "#000032",
                     "priority": 10,
                     "slopeSignal": "linear",
@@ -201,7 +285,7 @@
                     "firstUpperColor": "#0000ff",
                     "frequency": 0.25,
                     "fromStart": 0,
-                    "lastLowerColor": "#000000",
+                    "lastLowerColor": "#000005",
                     "lastUpperColor": "#000019",
                     "lowerSignal": "linear",
                     "priority": 0,
@@ -210,10 +294,30 @@
                     "upperSignal": "linear"
                 },
                 {
+                    "delay": 0,
+                    "duration": 200,
+                    "frequency": 0.25,
+                    "fromStart": 50,
+                    "lowerColor": "#000005",
+                    "priority": 0,
+                    "pulseSignal": "sinus",
+                    "type": "PulsingColor",
+                    "upperColor": "#000019"
+                },
+                {
                     "duration": 3.2000000000000002,
                     "firstColor": "#ffffff",
                     "fromStart": 23.300000000000001,
                     "lastColor": "#00005f",
+                    "priority": 10,
+                    "slopeSignal": "linear",
+                    "type": "ProgressiveColor"
+                },
+                {
+                    "duration": 3.2000000000000002,
+                    "firstColor": "#ffffff",
+                    "fromStart": 41,
+                    "lastColor": "#000042",
                     "priority": 10,
                     "slopeSignal": "linear",
                     "type": "ProgressiveColor"
@@ -224,7 +328,7 @@
                 "name": "G1",
                 "port": 6969,
                 "x": 0.050000000000000003,
-                "y": 0.90000000000000036
+                "y": 0.8999999999999998
             }
         },
         {
@@ -236,13 +340,24 @@
                     "firstUpperColor": "#0000ff",
                     "frequency": 0.25,
                     "fromStart": 0,
-                    "lastLowerColor": "#000000",
+                    "lastLowerColor": "#000005",
                     "lastUpperColor": "#000019",
                     "lowerSignal": "linear",
                     "priority": 0,
                     "pulseSignal": "sinus",
                     "type": "BoundedPulsingColor",
                     "upperSignal": "linear"
+                },
+                {
+                    "delay": 0,
+                    "duration": 200,
+                    "frequency": 0.25,
+                    "fromStart": 50,
+                    "lowerColor": "#000005",
+                    "priority": 0,
+                    "pulseSignal": "sinus",
+                    "type": "PulsingColor",
+                    "upperColor": "#000019"
                 },
                 {
                     "duration": 3.2000000000000002,
@@ -252,14 +367,23 @@
                     "priority": 10,
                     "slopeSignal": "linear",
                     "type": "ProgressiveColor"
+                },
+                {
+                    "duration": 3.2000000000000002,
+                    "firstColor": "#ffffff",
+                    "fromStart": 41,
+                    "lastColor": "#000042",
+                    "priority": 10,
+                    "slopeSignal": "linear",
+                    "type": "ProgressiveColor"
                 }
             ],
             "laumio": {
                 "ip": "",
                 "name": "D1",
                 "port": 6969,
-                "x": 0.94999999999999996,
-                "y": 0.90000000000000036
+                "x": 0.95000000000000007,
+                "y": 0.8999999999999998
             }
         },
         {
@@ -271,7 +395,7 @@
                     "firstUpperColor": "#0000ff",
                     "frequency": 0.25,
                     "fromStart": 0,
-                    "lastLowerColor": "#000000",
+                    "lastLowerColor": "#000005",
                     "lastUpperColor": "#000019",
                     "lowerSignal": "linear",
                     "priority": 0,
@@ -280,10 +404,30 @@
                     "upperSignal": "linear"
                 },
                 {
+                    "delay": 0,
+                    "duration": 200,
+                    "frequency": 0.25,
+                    "fromStart": 50,
+                    "lowerColor": "#000005",
+                    "priority": 0,
+                    "pulseSignal": "sinus",
+                    "type": "PulsingColor",
+                    "upperColor": "#000019"
+                },
+                {
                     "duration": 3.2000000000000002,
                     "firstColor": "#ffffff",
                     "fromStart": 29.300000000000001,
                     "lastColor": "#00006b",
+                    "priority": 10,
+                    "slopeSignal": "linear",
+                    "type": "ProgressiveColor"
+                },
+                {
+                    "duration": 3.2000000000000002,
+                    "firstColor": "#ffffff",
+                    "fromStart": 47.299999999999997,
+                    "lastColor": "#00000f",
                     "priority": 10,
                     "slopeSignal": "linear",
                     "type": "ProgressiveColor"
@@ -306,13 +450,24 @@
                     "firstUpperColor": "#0000ff",
                     "frequency": 0.25,
                     "fromStart": 0,
-                    "lastLowerColor": "#000000",
+                    "lastLowerColor": "#000005",
                     "lastUpperColor": "#000019",
                     "lowerSignal": "linear",
                     "priority": 0,
                     "pulseSignal": "sinus",
                     "type": "BoundedPulsingColor",
                     "upperSignal": "linear"
+                },
+                {
+                    "delay": 0,
+                    "duration": 200,
+                    "frequency": 0.25,
+                    "fromStart": 50,
+                    "lowerColor": "#000005",
+                    "priority": 0,
+                    "pulseSignal": "sinus",
+                    "type": "PulsingColor",
+                    "upperColor": "#000019"
                 },
                 {
                     "duration": 3.2000000000000002,
@@ -322,14 +477,23 @@
                     "priority": 10,
                     "slopeSignal": "linear",
                     "type": "ProgressiveColor"
+                },
+                {
+                    "duration": 3.2000000000000002,
+                    "firstColor": "#ffffff",
+                    "fromStart": 47.299999999999997,
+                    "lastColor": "#00000f",
+                    "priority": 10,
+                    "slopeSignal": "linear",
+                    "type": "ProgressiveColor"
                 }
             ],
             "laumio": {
                 "ip": "",
                 "name": "D2",
                 "port": 6969,
-                "x": 0.939425051334702,
-                "y": 0.68578352180937041
+                "x": 0.93942505133470211,
+                "y": 0.68578352180936997
             }
         },
         {
@@ -341,7 +505,7 @@
                     "firstUpperColor": "#0000ff",
                     "frequency": 0.25,
                     "fromStart": 0,
-                    "lastLowerColor": "#000000",
+                    "lastLowerColor": "#000005",
                     "lastUpperColor": "#000019",
                     "lowerSignal": "linear",
                     "priority": 0,
@@ -350,10 +514,30 @@
                     "upperSignal": "linear"
                 },
                 {
+                    "delay": 0,
+                    "duration": 200,
+                    "frequency": 0.25,
+                    "fromStart": 50,
+                    "lowerColor": "#000005",
+                    "priority": 0,
+                    "pulseSignal": "sinus",
+                    "type": "PulsingColor",
+                    "upperColor": "#000019"
+                },
+                {
                     "duration": 3.2000000000000002,
                     "firstColor": "#ffffff",
                     "fromStart": 17,
                     "lastColor": "#00009d",
+                    "priority": 10,
+                    "slopeSignal": "linear",
+                    "type": "ProgressiveColor"
+                },
+                {
+                    "duration": 3.2000000000000002,
+                    "firstColor": "#ffffff",
+                    "fromStart": 47.299999999999997,
+                    "lastColor": "#00000f",
                     "priority": 10,
                     "slopeSignal": "linear",
                     "type": "ProgressiveColor"
@@ -364,7 +548,7 @@
                 "name": "G3",
                 "port": 6969,
                 "x": 0.062628336755646802,
-                "y": 0.37560581583198693
+                "y": 0.37560581583198699
             }
         },
         {
@@ -376,13 +560,24 @@
                     "firstUpperColor": "#0000ff",
                     "frequency": 0.25,
                     "fromStart": 0,
-                    "lastLowerColor": "#000000",
+                    "lastLowerColor": "#000005",
                     "lastUpperColor": "#000019",
                     "lowerSignal": "linear",
                     "priority": 0,
                     "pulseSignal": "sinus",
                     "type": "BoundedPulsingColor",
                     "upperSignal": "linear"
+                },
+                {
+                    "delay": 0,
+                    "duration": 200,
+                    "frequency": 0.25,
+                    "fromStart": 50,
+                    "lowerColor": "#000005",
+                    "priority": 0,
+                    "pulseSignal": "sinus",
+                    "type": "PulsingColor",
+                    "upperColor": "#000019"
                 },
                 {
                     "duration": 3.2000000000000002,
@@ -392,14 +587,23 @@
                     "priority": 10,
                     "slopeSignal": "linear",
                     "type": "ProgressiveColor"
+                },
+                {
+                    "duration": 3.2000000000000002,
+                    "firstColor": "#ffffff",
+                    "fromStart": 47.299999999999997,
+                    "lastColor": "#00000f",
+                    "priority": 10,
+                    "slopeSignal": "linear",
+                    "type": "ProgressiveColor"
                 }
             ],
             "laumio": {
                 "ip": "",
                 "name": "D3",
                 "port": 6969,
-                "x": 0.95790554414784446,
-                "y": 0.45638126009693014
+                "x": 0.9579055441478439,
+                "y": 0.45638126009692986
             }
         }
     ],
