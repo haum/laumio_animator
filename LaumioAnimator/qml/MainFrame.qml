@@ -29,6 +29,7 @@ Item {
             onAccepted: if (cb != undefined) cb(fileUrl)
         }
         Row {
+            id: rowtop
             anchors {
                 verticalCenter: parent.verticalCenter
                 left: parent.left
@@ -37,22 +38,39 @@ Item {
                 rightMargin: 10
             }
             spacing: 10
+            property string _filename: ""
             LAButton {
                 text: "Open"
                 onClicked: {
                     fileDialog.selectExisting = true;
                     fileDialog.cb = function (file) {
                         anim.loadFromFile(file);
+                        rowtop._filename = file;
                     };
                     fileDialog.visible = true;
                 }
             }
             LAButton {
+                text: "Reload"
+                onClicked: {
+                    anim.loadFromFile(rowtop._filename);
+                }
+                visible: (rowtop._filename !== "")
+            }
+            LAButton {
                 text: "Save"
+                onClicked: {
+                    anim.saveToFile(rowtop._filename);
+                }
+                visible: (rowtop._filename !== "")
+            }
+            LAButton {
+                text: "Save as"
                 onClicked: {
                     fileDialog.selectExisting = false;
                     fileDialog.cb = function (file) {
                         anim.saveToFile(file);
+                        rowtop._filename = file;
                     };
                     fileDialog.visible = true;
                 }
