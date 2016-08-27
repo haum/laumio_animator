@@ -95,9 +95,17 @@ RPanel {
                         x: audio.position * timeExpand / 1000
                     }
                     onClicked: {
-                        if (mouse.button & Qt.LeftButton && mouse.modifiers & Qt.ShiftModifier) { // Shift+clic = paste
-                            if (nameColumn.copied)
-                                anim.copyAnimation(animationRepeater.laumioNb, nameColumn.copied);
+                        if (mouse.button & Qt.LeftButton) { // Shift+clic = paste
+                            if(mouse.modifiers & Qt.ShiftModifier){
+                                if (nameColumn.copied)
+                                    anim.copyAnimation(animationRepeater.laumioNb, nameColumn.copied);
+                            }
+                            else{
+                                var component = Qt.createComponent("animations/LAAnimationPopup.qml")
+                                if (component.status === Component.Ready) {
+                                    var dialog = component.createObject(parent,{laumioIndex: laumio});
+                                }
+                            }
                         }
                     }
                 }
