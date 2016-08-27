@@ -130,7 +130,7 @@ RPanel {
                 Binding {
                     target: view
                     property: "color"
-                    value: selectedLaumio ? selectedLaumio.colorCode : "black"
+                    value: selectedLaumio ? selectedLaumio.color : "black"
                 }
 
                 Rectangle {
