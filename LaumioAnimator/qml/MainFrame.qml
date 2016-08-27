@@ -228,6 +228,7 @@ Item {
             property var selectedLaumio: listColumn.selected ? listColumn.selected.laumio : undefined
             property var anim: anim
             clip: true
+            source: "TimeLineRPanel.qml"
             anchors {
                 top: parent.top
                 topMargin: 10
