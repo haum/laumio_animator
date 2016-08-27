@@ -1,0 +1,407 @@
+{
+    "animations": [
+        {
+            "anims": [
+                {
+                    "delay": 0,
+                    "duration": 50,
+                    "firstLowerColor": "#000096",
+                    "firstUpperColor": "#0000ff",
+                    "frequency": 0.25,
+                    "fromStart": 0,
+                    "lastLowerColor": "#000000",
+                    "lastUpperColor": "#000019",
+                    "lowerSignal": "linear",
+                    "priority": 0,
+                    "pulseSignal": "sinus",
+                    "type": "BoundedPulsingColor",
+                    "upperSignal": "linear"
+                }
+            ],
+            "laumio": {
+                "ip": "",
+                "name": "AlcoveG",
+                "port": 6969,
+                "x": 0,
+                "y": 0.25
+            }
+        },
+        {
+            "anims": [
+                {
+                    "delay": 0,
+                    "duration": 50,
+                    "firstLowerColor": "#000096",
+                    "firstUpperColor": "#0000ff",
+                    "frequency": 0.25,
+                    "fromStart": 0,
+                    "lastLowerColor": "#000000",
+                    "lastUpperColor": "#000019",
+                    "lowerSignal": "linear",
+                    "priority": 0,
+                    "pulseSignal": "sinus",
+                    "type": "BoundedPulsingColor",
+                    "upperSignal": "linear"
+                }
+            ],
+            "laumio": {
+                "ip": "",
+                "name": "AlcoveD",
+                "port": 6969,
+                "x": 1,
+                "y": 0.25
+            }
+        },
+        {
+            "anims": [
+                {
+                    "delay": 0,
+                    "duration": 50,
+                    "firstLowerColor": "#000096",
+                    "firstUpperColor": "#0000ff",
+                    "frequency": 0.25,
+                    "fromStart": 0,
+                    "lastLowerColor": "#000000",
+                    "lastUpperColor": "#000019",
+                    "lowerSignal": "linear",
+                    "priority": 0,
+                    "pulseSignal": "sinus",
+                    "type": "BoundedPulsingColor",
+                    "upperSignal": "linear"
+                },
+                {
+                    "duration": 3.2000000000000002,
+                    "firstColor": "#ffffff",
+                    "fromStart": 36.299999999999997,
+                    "lastColor": "#000032",
+                    "priority": 10,
+                    "slopeSignal": "linear",
+                    "type": "ProgressiveColor"
+                }
+            ],
+            "laumio": {
+                "ip": "",
+                "name": "PorteG",
+                "port": 6969,
+                "x": 0.40000000000000002,
+                "y": 0.94999999999999996
+            }
+        },
+        {
+            "anims": [
+                {
+                    "delay": 0,
+                    "duration": 50,
+                    "firstLowerColor": "#000096",
+                    "firstUpperColor": "#0000ff",
+                    "frequency": 0.25,
+                    "fromStart": 0,
+                    "lastLowerColor": "#000000",
+                    "lastUpperColor": "#000019",
+                    "lowerSignal": "linear",
+                    "priority": 0,
+                    "pulseSignal": "sinus",
+                    "type": "BoundedPulsingColor",
+                    "upperSignal": "linear"
+                },
+                {
+                    "duration": 3.2000000000000002,
+                    "firstColor": "#ffffff",
+                    "fromStart": 36.299999999999997,
+                    "lastColor": "#000032",
+                    "priority": 10,
+                    "slopeSignal": "linear",
+                    "type": "ProgressiveColor"
+                }
+            ],
+            "laumio": {
+                "ip": "",
+                "name": "PorteD",
+                "port": 6969,
+                "x": 0.59999999999999998,
+                "y": 0.94999999999999996
+            }
+        },
+        {
+            "anims": [
+                {
+                    "delay": 0,
+                    "duration": 50,
+                    "firstLowerColor": "#000096",
+                    "firstUpperColor": "#0000ff",
+                    "frequency": 0.25,
+                    "fromStart": 0,
+                    "lastLowerColor": "#000000",
+                    "lastUpperColor": "#000019",
+                    "lowerSignal": "linear",
+                    "priority": 0,
+                    "pulseSignal": "sinus",
+                    "type": "BoundedPulsingColor",
+                    "upperSignal": "linear"
+                },
+                {
+                    "duration": 3.2000000000000002,
+                    "firstColor": "#ffffff",
+                    "fromStart": 36.299999999999997,
+                    "lastColor": "#000032",
+                    "priority": 10,
+                    "slopeSignal": "linear",
+                    "type": "ProgressiveColor"
+                }
+            ],
+            "laumio": {
+                "ip": "",
+                "name": "FondG",
+                "port": 6969,
+                "x": 0.40000000000000002,
+                "y": 0.05000000000000001
+            }
+        },
+        {
+            "anims": [
+                {
+                    "delay": 0,
+                    "duration": 50,
+                    "firstLowerColor": "#000096",
+                    "firstUpperColor": "#0000ff",
+                    "frequency": 0.25,
+                    "fromStart": 0,
+                    "lastLowerColor": "#000000",
+                    "lastUpperColor": "#000019",
+                    "lowerSignal": "linear",
+                    "priority": 0,
+                    "pulseSignal": "sinus",
+                    "type": "BoundedPulsingColor",
+                    "upperSignal": "linear"
+                },
+                {
+                    "duration": 3.2000000000000002,
+                    "firstColor": "#ffffff",
+                    "fromStart": 36.299999999999997,
+                    "lastColor": "#000032",
+                    "priority": 10,
+                    "slopeSignal": "linear",
+                    "type": "ProgressiveColor"
+                }
+            ],
+            "laumio": {
+                "ip": "",
+                "name": "FondD",
+                "port": 6969,
+                "x": 0.59999999999999998,
+                "y": 0.05000000000000001
+            }
+        },
+        {
+            "anims": [
+                {
+                    "delay": 0,
+                    "duration": 50,
+                    "firstLowerColor": "#000096",
+                    "firstUpperColor": "#0000ff",
+                    "frequency": 0.25,
+                    "fromStart": 0,
+                    "lastLowerColor": "#000000",
+                    "lastUpperColor": "#000019",
+                    "lowerSignal": "linear",
+                    "priority": 0,
+                    "pulseSignal": "sinus",
+                    "type": "BoundedPulsingColor",
+                    "upperSignal": "linear"
+                },
+                {
+                    "duration": 3.2000000000000002,
+                    "firstColor": "#ffffff",
+                    "fromStart": 23.300000000000001,
+                    "lastColor": "#00005f",
+                    "priority": 10,
+                    "slopeSignal": "linear",
+                    "type": "ProgressiveColor"
+                }
+            ],
+            "laumio": {
+                "ip": "",
+                "name": "G1",
+                "port": 6969,
+                "x": 0.050000000000000003,
+                "y": 0.90000000000000036
+            }
+        },
+        {
+            "anims": [
+                {
+                    "delay": 0,
+                    "duration": 50,
+                    "firstLowerColor": "#000096",
+                    "firstUpperColor": "#0000ff",
+                    "frequency": 0.25,
+                    "fromStart": 0,
+                    "lastLowerColor": "#000000",
+                    "lastUpperColor": "#000019",
+                    "lowerSignal": "linear",
+                    "priority": 0,
+                    "pulseSignal": "sinus",
+                    "type": "BoundedPulsingColor",
+                    "upperSignal": "linear"
+                },
+                {
+                    "duration": 3.2000000000000002,
+                    "firstColor": "#ffffff",
+                    "fromStart": 17,
+                    "lastColor": "#00009d",
+                    "priority": 10,
+                    "slopeSignal": "linear",
+                    "type": "ProgressiveColor"
+                }
+            ],
+            "laumio": {
+                "ip": "",
+                "name": "D1",
+                "port": 6969,
+                "x": 0.94999999999999996,
+                "y": 0.90000000000000036
+            }
+        },
+        {
+            "anims": [
+                {
+                    "delay": 0,
+                    "duration": 50,
+                    "firstLowerColor": "#000096",
+                    "firstUpperColor": "#0000ff",
+                    "frequency": 0.25,
+                    "fromStart": 0,
+                    "lastLowerColor": "#000000",
+                    "lastUpperColor": "#000019",
+                    "lowerSignal": "linear",
+                    "priority": 0,
+                    "pulseSignal": "sinus",
+                    "type": "BoundedPulsingColor",
+                    "upperSignal": "linear"
+                },
+                {
+                    "duration": 3.2000000000000002,
+                    "firstColor": "#ffffff",
+                    "fromStart": 29.300000000000001,
+                    "lastColor": "#00006b",
+                    "priority": 10,
+                    "slopeSignal": "linear",
+                    "type": "ProgressiveColor"
+                }
+            ],
+            "laumio": {
+                "ip": "",
+                "name": "G2",
+                "port": 6969,
+                "x": 0.146817248459959,
+                "y": 0.69870759289176099
+            }
+        },
+        {
+            "anims": [
+                {
+                    "delay": 0,
+                    "duration": 50,
+                    "firstLowerColor": "#000096",
+                    "firstUpperColor": "#0000ff",
+                    "frequency": 0.25,
+                    "fromStart": 0,
+                    "lastLowerColor": "#000000",
+                    "lastUpperColor": "#000019",
+                    "lowerSignal": "linear",
+                    "priority": 0,
+                    "pulseSignal": "sinus",
+                    "type": "BoundedPulsingColor",
+                    "upperSignal": "linear"
+                },
+                {
+                    "duration": 3.2000000000000002,
+                    "firstColor": "#ffffff",
+                    "fromStart": 23.300000000000001,
+                    "lastColor": "#00005f",
+                    "priority": 10,
+                    "slopeSignal": "linear",
+                    "type": "ProgressiveColor"
+                }
+            ],
+            "laumio": {
+                "ip": "",
+                "name": "D2",
+                "port": 6969,
+                "x": 0.939425051334702,
+                "y": 0.68578352180937041
+            }
+        },
+        {
+            "anims": [
+                {
+                    "delay": 0,
+                    "duration": 50,
+                    "firstLowerColor": "#000096",
+                    "firstUpperColor": "#0000ff",
+                    "frequency": 0.25,
+                    "fromStart": 0,
+                    "lastLowerColor": "#000000",
+                    "lastUpperColor": "#000019",
+                    "lowerSignal": "linear",
+                    "priority": 0,
+                    "pulseSignal": "sinus",
+                    "type": "BoundedPulsingColor",
+                    "upperSignal": "linear"
+                },
+                {
+                    "duration": 3.2000000000000002,
+                    "firstColor": "#ffffff",
+                    "fromStart": 17,
+                    "lastColor": "#00009d",
+                    "priority": 10,
+                    "slopeSignal": "linear",
+                    "type": "ProgressiveColor"
+                }
+            ],
+            "laumio": {
+                "ip": "",
+                "name": "G3",
+                "port": 6969,
+                "x": 0.062628336755646802,
+                "y": 0.37560581583198693
+            }
+        },
+        {
+            "anims": [
+                {
+                    "delay": 0,
+                    "duration": 50,
+                    "firstLowerColor": "#000096",
+                    "firstUpperColor": "#0000ff",
+                    "frequency": 0.25,
+                    "fromStart": 0,
+                    "lastLowerColor": "#000000",
+                    "lastUpperColor": "#000019",
+                    "lowerSignal": "linear",
+                    "priority": 0,
+                    "pulseSignal": "sinus",
+                    "type": "BoundedPulsingColor",
+                    "upperSignal": "linear"
+                },
+                {
+                    "duration": 3.2000000000000002,
+                    "firstColor": "#ffffff",
+                    "fromStart": 29.300000000000001,
+                    "lastColor": "#00006b",
+                    "priority": 10,
+                    "slopeSignal": "linear",
+                    "type": "ProgressiveColor"
+                }
+            ],
+            "laumio": {
+                "ip": "",
+                "name": "D3",
+                "port": 6969,
+                "x": 0.95790554414784446,
+                "y": 0.45638126009693014
+            }
+        }
+    ],
+    "audioSource": "file:///tmp/teriaki16.wav"
+}
