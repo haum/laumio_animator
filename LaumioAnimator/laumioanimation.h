@@ -140,8 +140,20 @@ private:
         Laumio * laumio;
     };
 
-    /* Checks if a PlayAnim has higher priority than another */
-    int priorityTest(PlayAnim p1, PlayAnim p2);
+    enum PriorityTestResult {
+        PriorityTestResult_NotComparable,
+        PriorityTestResult_HigherPrio,
+        PriorityTestResult_LowerPrio,
+    };
+
+    /** Checks if a PlayAnim has higher priority than another
+      * @param p1 First playanim
+      * @param p2 Second playanim
+      * @return PriorityTestResult_HigherPrio if prio(p1) > prio(p2),
+      *         PriorityTestResult_LowerPrio if prio(p1) < prio(p2),
+      *         PriorityTestResult_NotComparable if p1 and p2 do not target same laumio
+      */
+    PriorityTestResult priorityTest(PlayAnim p1, PlayAnim p2);
 
     /** List of aimations to be played **/
     std::list <PlayAnim> m_play_toBePlayed;
