@@ -23,6 +23,7 @@ RPanel {
         Column {
             id: nameColumn
             property var selected: undefined
+            property var copied: undefined
             anchors {
                 top: parent.top
             }
@@ -52,7 +53,14 @@ RPanel {
                                 }
                                 acceptedButtons: Qt.LeftButton | Qt.RightButton
                                 onClicked: {
-                                    if (mouse.button & Qt.LeftButton) {
+                                    if (mouse.button & Qt.LeftButton && mouse.modifiers & Qt.ControlModifier) { // Ctrl+clic = copy
+                                        nameColumn.copied = modelData;
+
+                                    } else if (mouse.button & Qt.LeftButton && mouse.modifiers & Qt.ShiftModifier) { // Shift+clic = paste
+                                        if (nameColumn.copied)
+                                            anim.copyAnimation(animationRepeater.laumioNb, nameColumn.copied);
+
+                                    } else if (mouse.button & Qt.LeftButton) {
                                         var component = Qt.createComponent(
                                                     "animations/LA" + modelData.name + ".qml")
                                         component.animation = modelData
@@ -85,6 +93,12 @@ RPanel {
                         height: parent.height
                         width: 3
                         x: audio.position * timeExpand / 1000
+                    }
+                    onClicked: {
+                        if (mouse.button & Qt.LeftButton && mouse.modifiers & Qt.ShiftModifier) { // Shift+clic = paste
+                            if (nameColumn.copied)
+                                anim.copyAnimation(animationRepeater.laumioNb, nameColumn.copied);
+                        }
                     }
                 }
             }

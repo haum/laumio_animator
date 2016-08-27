@@ -2,9 +2,10 @@ import QtQuick 2.0
 import "widgets"
 
 Item {
+    id: lane
     property int laumio
     property bool selected
-    signal clicked()
+    signal clicked(var mouse)
 
     MouseArea {
         anchors.fill: parent
@@ -13,6 +14,7 @@ Item {
             if (component.status === Component.Ready) {
                 var dialog = component.createObject(parent,{laumioIndex: laumio});
             }
+            lane.clicked(mouse)
         }
         Rectangle {
             anchors.fill: parent

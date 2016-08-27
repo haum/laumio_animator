@@ -79,6 +79,12 @@ public slots:
       */
     Animation* newAnimation(int index, QString factoryName);
 
+    /** Copy animation
+      * @param index     Index of laumio
+      * @param animation Animation to copy
+      */
+    Animation* copyAnimation(int index, Animation * animation);
+
     /** Remove animation
       * @param laumioNb    Index of laumio
       * @param index       Index of animation
