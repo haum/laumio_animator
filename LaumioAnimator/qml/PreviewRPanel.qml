@@ -248,7 +248,7 @@ RPanel {
                     onClicked: {
                         var animationName = animationItem.get(listAnimation.currentIndex).value;
                         if (animationName == "rainbow") {
-                            selectedLaumio.animRaindow();
+                            selectedLaumio.animRainbow();
                         } else if (animationName == "colorWipe") {
                             selectedLaumio.animColorWipe("black");
                         }

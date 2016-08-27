@@ -183,14 +183,12 @@ void LaumioAnimation::saveToFile(QString filename) {
     f.write(doc.toJson());
 }
 
-int LaumioAnimation::priorityTest(PlayAnim p1, PlayAnim p2){
-    int ret = 0;
-    if(p1.laumio == p2.laumio){
-        ret = 1;
-        if(p1.anim->priority() > p2.anim->priority())
-            ret = 2;
-    }
-    return ret;
+LaumioAnimation::PriorityTestResult LaumioAnimation::priorityTest(PlayAnim p1, PlayAnim p2){
+    if (p1.laumio != p2.laumio)
+        return PriorityTestResult_NotComparable;
+    if (p1.anim->priority() > p2.anim->priority())
+        return PriorityTestResult_HigherPrio;
+    return PriorityTestResult_LowerPrio;
 }
 
 void LaumioAnimation::play(int ms) {
@@ -263,39 +261,37 @@ void LaumioAnimation::playContinue() {
     itEnd = std::end(m_play_playing);
     it = itBegin;
     while (it != itEnd) {
+        // If animation ended
         if (it->anim->fromStart() + it->anim->duration() <= now) {
             m_play_toBeDeleted.push_back(*it);
             auto itRm = it;
             ++it;
             m_play_playing.erase(itRm);
+
+        // Else compare to elements in reallyPlaying to keep only higher priorities
         } else {
-            if(m_play_reallyPlaying.empty()){
-                m_play_reallyPlaying.push_back(*it);
-            }
+            bool isThere = false;
             itReally = std::begin(m_play_reallyPlaying);
             while (itReally != std::end(m_play_reallyPlaying)) {
-                int test = priorityTest(*it, *itReally);
-                switch(test){
-                    case 1: {
-                        ++itReally;
-                        break;
-                    }
-                    case 2: {
+                PriorityTestResult test = priorityTest(*it, *itReally);
+                if (test == PriorityTestResult_HigherPrio) {
                         auto itRm = itReally;
                         ++itReally;
                         m_play_reallyPlaying.erase(itRm);
-                        break;
-                    }
-                    case 0: {
-                        ++itReally;
                         m_play_reallyPlaying.push_back(*it);
-                        break;
-                    }
+                } else {
+                    ++itReally;
                 }
+                if (test != PriorityTestResult_NotComparable)
+                    isThere = true;
             }
+            if (!isThere)
+                m_play_reallyPlaying.push_back(*it);
             ++it;
         }
     }
+
+    // Play higher priorities
     itReally = std::begin(m_play_reallyPlaying);
     while (itReally != std::end(m_play_reallyPlaying)){
         bool update = itReally->anim->animationUpdate(*(itReally->laumio), now - itReally->anim->fromStart());
